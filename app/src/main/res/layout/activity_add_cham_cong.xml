@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/linear_v"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.ChamCong.AddChamCong">
+
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="Chấm Công Nhân Viên"
+        android:gravity="center"
+        style="@style/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="ID" />
+
+        <EditText
+            android:enabled="false"
+            android:id="@+id/tvMaNV"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="Họ tên" />
+
+        <EditText
+            android:id="@+id/tvHoTen"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="Ngày tháng" />
+
+        <EditText
+            android:id="@+id/txtNgayChamCong"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="Số ngày công" />
+
+        <EditText
+            android:id="@+id/txtSoNgayCong"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <Button
+        android:fontFamily="@font/playfairdisplay_bolditalic"
+        android:id="@+id/btnthemCC"
+        style="@style/button"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_del"
+        android:text="@string/them"/>
+
+</LinearLayout>

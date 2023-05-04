@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/linear_v"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.NhanVien.AddNhanVien">
+    <TextView
+        android:text="Sửa Thông Tin"
+        android:gravity="center"
+        style="@style/tv_title"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="85dp">
+        <ImageView
+            android:id="@+id/imgHinhDaiDien"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+        <Button
+            android:id="@+id/btnChonHinh"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="33dp"
+            android:background="@drawable/button_del"
+            android:text="Chọn Hình"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="ID" />
+
+        <EditText
+            android:enabled="false"
+            android:id="@+id/tvMaNV"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="Họ tên" />
+
+        <EditText
+            android:id="@+id/txtTenNV"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <TextView
+            style="@style/tv_noidung"
+            android:layout_width="93dp"
+            android:text="@string/ngaysinh" />
+
+        <EditText
+            android:id="@+id/txtNgaySinh"
+            style="@style/edttext"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="239dp"
+            android:layout_height="45dp"
+            android:inputType="date" />
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/btnDatePicker"-->
+        <!--            style="@style/button_model_view"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="47dp"-->
+        <!--            android:layout_marginLeft="10dp"-->
+        <!--            android:src="@drawable/date" />-->
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        >
+        <TextView
+            style="@style/tv_noidung"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:text="@string/gioitinh"/>
+        <RadioButton
+            android:id="@+id/radNam"
+            style="@style/btn_radio"
+            android:text="Nam"
+            android:checked="true"
+            android:layout_marginLeft="50dp"
+            android:button="@drawable/custom_checkbox"
+            />
+
+        <RadioButton
+            android:id="@+id/radNu"
+            style="@style/btn_radio"
+            android:text="Nữ"
+            android:layout_marginLeft="40dp"
+            android:button="@drawable/custom_checkbox"
+            />
+    </RadioGroup>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/tv_noidung"
+            android:layout_width="58dp"
+            android:text="@string/room" />
+
+        <Spinner
+            android:id="@+id/spTenPB"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/tv_noidung"
+            android:layout_width="94dp"
+            android:text="@string/hesoluong" />
+        <EditText
+            android:id="@+id/edtLuong"
+            style="@style/edttext"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_height="45dp"
+            android:inputType="number"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        style="@style/button"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_del"
+        android:text="Sửa"/>
+
+</LinearLayout>

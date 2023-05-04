@@ -1,0 +1,47 @@
+package com.example.quanlytinhluong.Database;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import org.jetbrains.annotations.Nullable;
+
+public class DBHelper extends SQLiteOpenHelper {
+    public DBHelper(@Nullable Context context) {
+        super(context, "SQLQuanLyTinhLuong", null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String sqlPhongBan = "Create table PhongBan (mapb text PRIMARY KEY NOT NULL , tenpb text) ";
+        db.execSQL(sqlPhongBan);
+
+        String sqlNhanVien = "Create table NhanVien (manv text PRIMARY KEY NOT NULL, tennv text, ngaysinh text, gioitinh text,mapb text, hesoluong text, imagenv Blob)";
+        db.execSQL(sqlNhanVien);
+
+        String sqlChamCong = "Create table ChamCong (manv text, ngaychamcong text, songaycong text)";
+        db.execSQL(sqlChamCong);
+
+        String sqlTamUng = "Create table TamUng (sophieu text PRIMARY KEY NOT NULL, ngaytamung text, sotienung text, manv text)";
+        db.execSQL(sqlTamUng);
+
+        String account = "Create table Account (username text PRIMARY KEY NOT NULL, password text, phone text)";
+        db.execSQL(account);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onCreate(db);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            // Enable foreign key constraints
+            db.execSQL("PRAGMA foreign_keys=ON;");
+        }
+    }
+}

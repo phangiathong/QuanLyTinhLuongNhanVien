@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".Interface.MainActivityHome">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/bghome"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:layout_marginTop="40dp"
+        >
+
+        <Button
+            android:id="@+id/btnDSNhanVien"
+            style="@style/button_img"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:background="@drawable/custom_button1"
+            android:drawableTop="@drawable/salary1"
+            android:gravity="center"
+            android:fontFamily="@font/playfairdisplay_italic"
+            android:text="Nhân Viên"/>
+
+        <Button
+            android:id="@+id/btnDSChamCong"
+            style="@style/button_img"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/custom_button1"
+            android:drawableTop="@drawable/pay"
+            android:gravity="center"
+            android:fontFamily="@font/playfairdisplay_italic"
+            android:text="Chấm Công"/>
+
+        <Button
+            android:id="@+id/btnDSTamUng"
+            style="@style/button_img"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/custom_button1"
+            android:drawableTop="@drawable/money"
+            android:layout_width="wrap_content"
+            android:text="Tạm Ứng"
+            android:fontFamily="@font/playfairdisplay_italic"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <Button
+            android:id="@+id/btnThongKe"
+            style="@style/button_img"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:background="@drawable/custom_button1"
+            android:drawableTop="@drawable/summary"
+            android:gravity="center"
+            android:fontFamily="@font/playfairdisplay_italic"
+            android:text="Thống Kê"/>
+
+        <Button
+            android:id="@+id/btnDepartment"
+            style="@style/button_img"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/custom_button1"
+            android:drawableTop="@drawable/department"
+            android:gravity="center"
+            android:fontFamily="@font/playfairdisplay_italic"
+            android:text="Phòng Ban"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.PhongBan.AddPhongBan">
+
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        style="@style/tv_title"
+        android:text="@string/themPB"/>
+    <EditText
+        style="@style/edttext"
+        android:id="@+id/txtMaPhong"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/nhapMP"/>
+
+    <EditText
+        style="@style/edttext"
+        android:id="@+id/txtTenPhong"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/nhapTP"/>
+
+    <Button
+        android:id="@+id/btnthemPB"
+        style="@style/button"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_del"
+        android:text="@string/them"/>
+
+</LinearLayout>

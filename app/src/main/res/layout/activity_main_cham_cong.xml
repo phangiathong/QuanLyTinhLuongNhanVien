@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/linear_v"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.ChamCong.MainActivityChamCong">
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="Danh Sách Chấm Công"
+        android:gravity="center"
+        style="@style/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ListView
+        android:id="@+id/lvChamCong"
+        style="@style/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:padding="5dp"/>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.PhongBan.UpdatePhongBan">
+
+    <TextView
+        android:text="Cập nhật phòng ban"
+        style="@style/tv_title"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:enabled="false"
+        style="@style/edttext"
+        android:id="@+id/tvMaPhongS"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Nhập mã phòng"/>
+
+    <EditText
+        style="@style/edttext"
+        android:id="@+id/txtTenPhongS"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Nhập tên phòng"/>
+
+    <Button
+        android:id="@+id/btnSuaPB"
+        android:layout_marginTop="70dp"
+        android:text="Sửa"
+        android:background="@drawable/button_del"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+</LinearLayout>
