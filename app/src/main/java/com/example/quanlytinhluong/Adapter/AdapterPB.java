@@ -15,9 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.quanlytinhluong.Database.DBPhongBan;
-import com.example.quanlytinhluong.Interface.NhanVien.MainActivityNhanVien;
-import com.example.quanlytinhluong.Interface.PhongBan.MainActivityPhongBan;
-import com.example.quanlytinhluong.Interface.PhongBan.UpdatePhongBan;
+import com.example.quanlytinhluong.Interface.Departments.MainActivityPhongBan;
+import com.example.quanlytinhluong.Interface.Departments.UpdatePhongBan;
 import com.example.quanlytinhluong.Model.PhongBan;
 import com.example.quanlytinhluong.R;
 

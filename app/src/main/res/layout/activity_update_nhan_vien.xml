@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     style="@style/linear_v"
     android:background="@drawable/background_all"
-    tools:context=".Interface.NhanVien.AddNhanVien">
+    tools:context=".Interface.Employee.AddNhanVien">
     <TextView
         android:text="Sửa Thông Tin"
         android:gravity="center"

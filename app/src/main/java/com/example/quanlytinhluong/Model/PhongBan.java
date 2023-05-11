@@ -20,6 +20,7 @@ public class PhongBan {
         this.tenPhong = tenPhong;
     }
 
+
     @Override
     public String toString() {
         return "PhongBan{" +

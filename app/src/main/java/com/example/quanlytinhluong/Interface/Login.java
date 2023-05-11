@@ -74,10 +74,12 @@ public class Login extends Fragment {
                 String password = pass.getText().toString();
                 new DBAccount(getContext()).checkLogin(username, new DBAccount.onClickListener() {
                     @Override
-                    public void success(String pass) {
-                        if (password.equals(pass)) {
+                    public void success(String mk) {
+                        if (password.equals(mk)) {
                             Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getContext(), MainActivityHome.class));
+                            uname.setText("");
+                            pass.setText("");
                         } else {
                             Toast.makeText(getContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
                         }

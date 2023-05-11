@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.ChamCong;
+package com.example.quanlytinhluong.Interface.CheckOut;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -37,7 +37,7 @@ public class UpdateChamCong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_cham_cong);
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar =getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         tvMaNhanVien = findViewById(R.id.tvMaNV);
@@ -53,8 +53,8 @@ public class UpdateChamCong extends AppCompatActivity {
         showDate(year, month + 1, day);
         String manv = getIntent().getExtras().getString("manv");
         DBChamCong dbChamCong = new DBChamCong(getApplicationContext());
-        chamCong = dbChamCong.layChamCong(manv);
-        DBNhanVien dbNhanVien = new DBNhanVien(getApplicationContext());
+        chamCong= dbChamCong.layChamCong(manv);
+        DBNhanVien dbNhanVien= new DBNhanVien(getApplicationContext());
         dataNV = dbNhanVien.LayNhanVien(chamCong.get(0).getMaNV());
         tvMaNhanVien.setText(dataNV.get(0).getMaNV());
         tvTenNhanVien.setText(dataNV.get(0).getTenNV());

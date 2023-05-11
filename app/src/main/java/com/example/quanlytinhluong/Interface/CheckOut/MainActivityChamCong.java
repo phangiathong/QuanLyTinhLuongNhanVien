@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.ChamCong;
+package com.example.quanlytinhluong.Interface.CheckOut;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivityChamCong extends AppCompatActivity {
     ListView lvChamCong;
     AdapterChamCong adapter_chamcong;
-    ArrayList<ChamCong> data_chamcong = new ArrayList<>();
+    ArrayList<ChamCong> data_chamcong= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +31,8 @@ public class MainActivityChamCong extends AppCompatActivity {
         lvChamCong = findViewById(R.id.lvChamCong);
 
         DBChamCong dbChamCong = new DBChamCong(getApplicationContext());
-        data_chamcong = dbChamCong.layDuLieuCC();
-        adapter_chamcong = new AdapterChamCong(MainActivityChamCong.this, R.layout.custom_chamcong, data_chamcong);
+        data_chamcong=dbChamCong.layDuLieuCC();
+        adapter_chamcong= new AdapterChamCong(MainActivityChamCong.this, R.layout.custom_chamcong, data_chamcong);
         adapter_chamcong.notifyDataSetChanged();
         lvChamCong.setAdapter(adapter_chamcong);
     }
@@ -45,7 +45,7 @@ public class MainActivityChamCong extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.btnHome){
+        if(item.getItemId()== R.id.btnHome){
             Intent intent = new Intent(MainActivityChamCong.this, MainActivityHome.class);
             startActivity(intent);
         }else {

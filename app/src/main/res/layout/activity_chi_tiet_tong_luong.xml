@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.TotalSalary.ChiTietTongLuong">
+
+    <TextView
+        android:text="Chi Tiết"
+        android:gravity="center"
+        style="@style/tv_title"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:id="@+id/tvTenNV"
+        style="@style/tv_title"
+        android:background="@drawable/custom_button3"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="ID nhân viên" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvMaNhanVien"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Phòng ban" />
+        <TextView
+            android:layout_marginLeft="40dp"
+
+            android:id="@+id/tvTenPhongBan"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Hệ số lương" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvHeSoLuong"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Số ngày" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvSoNgayCong"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Tạm ứng" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvTamUng"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Ngày chấm công" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvNgayChamCong"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Lương cơ bản" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvLuongCB"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Lương thực lãnh" />
+        <TextView
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tvThucLanh"
+            style="@style/tv_noidung"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+</LinearLayout>

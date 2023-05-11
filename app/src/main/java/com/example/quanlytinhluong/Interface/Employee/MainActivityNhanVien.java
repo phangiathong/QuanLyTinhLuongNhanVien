@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.NhanVien;
+package com.example.quanlytinhluong.Interface.Employee;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,7 +48,7 @@ public class MainActivityNhanVien extends AppCompatActivity {
     private void HienThiDL() {
         DBNhanVien dbNhanVien = new DBNhanVien(this);
         dataNV = dbNhanVien.LayDSNhanVien();
-        adapterNV = new AdapterNhanVien(MainActivityNhanVien.this, R.layout.custom_nhanvien, dataNV);
+        adapterNV =new AdapterNhanVien(MainActivityNhanVien.this, R.layout.custom_nhanvien, dataNV);
         adapterNV.notifyDataSetChanged();
         lvDanhSachNV.setAdapter(adapterNV);
     }

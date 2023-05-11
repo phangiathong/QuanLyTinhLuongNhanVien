@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.PhongBan;
+package com.example.quanlytinhluong.Interface.Departments;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +49,7 @@ public class MainActivityPhongBan extends AppCompatActivity {
 
     private void HienThiDL() {
         DBPhongBan dbPhongBan = new DBPhongBan(this);
-        data_PB = dbPhongBan.LayDL();
+        data_PB= dbPhongBan.LayDL();
         adapter_PB = new AdapterPB(MainActivityPhongBan.this, R.layout.custom_phongban, data_PB);
         lvPhongBan.setAdapter(adapter_PB);
     }

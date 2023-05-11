@@ -1,10 +1,9 @@
-package com.example.quanlytinhluong.Interface.PhongBan;
+package com.example.quanlytinhluong.Interface.Departments;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -32,7 +31,7 @@ public class AddPhongBan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_phong_ban);
         dbHelper = new DBHelper(this);
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         dbPhongBan = new DBPhongBan(this);
 
@@ -46,8 +45,6 @@ public class AddPhongBan extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("infor", txtMaPB.getText().toString()+"null");
                 ThemDL();
-//                Intent intent = new Intent(AddPhongBan.this, MainActivityPhongBan.class);
-//                startActivity(intent);
             }
         });
     }

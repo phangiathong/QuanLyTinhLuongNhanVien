@@ -5,9 +5,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:id="@+id/tvTenNV"
+        style="@style/tv_title"
+        android:background="@drawable/custom_button3"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"/>
     <LinearLayout
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="133dp">
         <ImageView
@@ -18,10 +23,12 @@
             android:layout_height="130dp"/>
 
         <LinearLayout
+            android:gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:paddingLeft="5dp"
                 android:layout_width="match_parent"
@@ -38,21 +45,7 @@
                     style="@style/tv_noidung" />
             </LinearLayout>
 
-            <LinearLayout
-                android:paddingLeft="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:fontFamily="@font/playfairdisplay_italic"
-                    style="@style/tv_noidung"
-                    android:layout_width="96dp"
-                    android:text="@string/tennv" />
-                <TextView
-                    android:id="@+id/tvTenNV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/tv_noidung" />
-            </LinearLayout>
+
 
             <LinearLayout
                 android:paddingLeft="5dp"

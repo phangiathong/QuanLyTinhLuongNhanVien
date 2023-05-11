@@ -1,96 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".Interface.MainActivityHome">
 
-    <ImageView
+    <View
+        android:background="@drawable/background_home"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@drawable/bghome"
-        android:scaleType="centerCrop"/>
+        android:layout_height="200dp"/>
+
+    <TextView
+        android:id="@+id/title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginLeft="77dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:gravity="center"
+        android:text="Quản Lý Tính Lương"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        style="@style/linear_h"
-        android:layout_height="150dp"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:padding="5dp"
-        android:layout_marginTop="40dp"
-        >
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnDSNhanVien"
-            style="@style/button_img"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:background="@drawable/custom_button1"
-            android:drawableTop="@drawable/salary1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="@font/playfairdisplay_italic"
-            android:text="Nhân Viên"/>
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnDSChamCong"
-            style="@style/button_img"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/custom_button1"
-            android:drawableTop="@drawable/pay"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:paddingRight="10dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/custom_button1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnDSNhanVien"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/salary1"
+                        android:gravity="center"
+                        android:text="Nhân Viên" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/custom_button1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnDSChamCong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/pay"
+                        android:gravity="center"
+                        android:text="Chấm Công" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="@font/playfairdisplay_italic"
-            android:text="Chấm Công"/>
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnDSTamUng"
-            style="@style/button_img"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/custom_button1"
-            android:drawableTop="@drawable/money"
-            android:layout_width="wrap_content"
-            android:text="Tạm Ứng"
-            android:fontFamily="@font/playfairdisplay_italic"
-            android:layout_height="match_parent"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/custom_button1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnDSTamUng"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/tamung"
+                        android:gravity="center"
+                        android:text="Tạm Ứng" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/custom_button1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnDepartment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/department"
+                        android:gravity="center"
+                        android:text="Phòng Ban" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/custom_button1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnThongKe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:drawableTop="@drawable/summary"
+                        android:gravity="center"
+                        android:text="Tổng Lương" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/linear_h"
-        android:layout_height="150dp"
-        android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:padding="5dp"
-        android:layout_marginTop="20dp"
-        >
-
-        <Button
-            android:id="@+id/btnThongKe"
-            style="@style/button_img"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:background="@drawable/custom_button1"
-            android:drawableTop="@drawable/summary"
-            android:gravity="center"
-            android:fontFamily="@font/playfairdisplay_italic"
-            android:text="Thống Kê"/>
-
-        <Button
-            android:id="@+id/btnDepartment"
-            style="@style/button_img"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/custom_button1"
-            android:drawableTop="@drawable/department"
-            android:gravity="center"
-            android:fontFamily="@font/playfairdisplay_italic"
-            android:text="Phòng Ban"/>
-
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

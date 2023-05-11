@@ -8,7 +8,7 @@
     android:padding="15dp"
     android:gravity="center_horizontal"
     android:background="@drawable/background_all"
-    tools:context=".Interface.PhongBan.AddPhongBan">
+    tools:context=".Interface.Departments.AddPhongBan">
 
     <TextView
         android:fontFamily="@font/playfairdisplay_italic"

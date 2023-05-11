@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     style="@style/linear_v"
     android:background="@drawable/background_all"
-    tools:context=".Interface.ChamCong.AddChamCong">
+    tools:context=".Interface.CheckOut.AddChamCong">
 
     <TextView
         android:fontFamily="@font/playfairdisplay_italic"

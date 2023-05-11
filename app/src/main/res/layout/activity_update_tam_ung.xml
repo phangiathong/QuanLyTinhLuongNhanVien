@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/linear_v"
+    android:orientation="vertical"
     android:background="@drawable/background_all"
-    tools:context=".Interface.CheckOut.UpdateChamCong">
-
+    tools:context=".Interface.Advance.UpdateTamUng">
     <TextView
-        android:text="Cập Nhật Chấm Công"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="Cập Nhật Tạm Ứng"
         android:gravity="center"
         style="@style/tv_title"
-        android:fontFamily="@font/playfairdisplay_italic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <LinearLayout
-        android:layout_marginTop="50dp"
         style="@style/linear_h"
         android:padding="10dp"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,7 +27,7 @@
             style="@style/tv_noidung"
             android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:text="ID" />
+            android:text="ID nhân viên" />
 
         <EditText
             android:enabled="false"
@@ -56,6 +55,7 @@
             android:text="Họ tên" />
 
         <EditText
+            android:enabled="false"
             android:id="@+id/tvHoTen"
             style="@style/edttext"
             android:inputType="text"
@@ -77,10 +77,11 @@
             style="@style/tv_noidung"
             android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:text="Ngày tháng" />
+            android:text="Mã tạm ứng" />
 
         <EditText
-            android:id="@+id/tvNgayChamCong"
+            android:enabled="false"
+            android:id="@+id/tvSoPhieu"
             style="@style/edttext"
             android:inputType="text"
             android:paddingLeft="15dp"
@@ -101,10 +102,34 @@
             style="@style/tv_noidung"
             android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:text="Số ngày công" />
+            android:text="Ngày ứng" />
 
         <EditText
-            android:id="@+id/txtSoNgayCong"
+            android:id="@+id/txtNgayUng"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="Số tiền" />
+
+        <EditText
+            android:id="@+id/txtSoTienUng"
             style="@style/edttext"
             android:inputType="text"
             android:paddingLeft="15dp"
@@ -114,11 +139,10 @@
     </LinearLayout>
 
     <Button
-        android:fontFamily="@font/playfairdisplay_bolditalic"
-        android:id="@+id/btnSuaCC"
+        android:id="@+id/btnSuaTU"
         style="@style/button"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/button_del"
         android:text="Sửa"/>
 

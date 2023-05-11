@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +19,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.quanlytinhluong.Database.DBNhanVien;
-import com.example.quanlytinhluong.Interface.ChamCong.AddChamCong;
-import com.example.quanlytinhluong.Interface.NhanVien.MainActivityNhanVien;
-import com.example.quanlytinhluong.Interface.NhanVien.UpdateNhanVien;
+import com.example.quanlytinhluong.Interface.CheckOut.AddChamCong;
+import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
+import com.example.quanlytinhluong.Interface.Employee.UpdateNhanVien;
+import com.example.quanlytinhluong.Interface.Advance.AddTamUng;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
 
@@ -93,7 +93,10 @@ public class AdapterNhanVien extends ArrayAdapter {
         if (nhanVien.getGioiTinh().equals("Nữ")) {
             holder.tvGioiTinh.setText(nhanVien.getGioiTinh());
         }
-        holder.tvPhongBan.setText(nhanVien.getMaPhong());
+
+//        holder.tvPhongBan.setText(nhanVien.getMaPhong() );
+        holder.tvPhongBan.setText(dbNhanVien.layTenPhong(nhanVien.getMaPhong()));
+
         holder.tvLuong.setText(currencyVN.format(Integer.parseInt(nhanVien.getBacLuong())) + " VND");
         if(nhanVien.getImage() == null){
             holder.imgAnhDaiDien.setImageResource(R.drawable.man);
@@ -163,6 +166,17 @@ public class AdapterNhanVien extends ArrayAdapter {
                     });
                     builder.show();
                 }
+            }
+        });
+
+        holder.btnTamUng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AddTamUng.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("ma",nhanVien.getMaNV());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
 

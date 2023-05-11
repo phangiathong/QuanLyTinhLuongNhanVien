@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.NhanVien;
+package com.example.quanlytinhluong.Interface.Employee;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -44,7 +43,7 @@ public class AddNhanVien extends AppCompatActivity {
     Spinner spPhongBan;
     ImageView imgAnhDaiDien;
     Button btnAdd, btnChonHinh;
-    ImageButton btnDatePicker;
+
     DBPhongBan dbPhongBan;
     CheckInfor checkError = new CheckInfor(AddNhanVien.this);
     ArrayList<String> dsPhong;
@@ -65,7 +64,7 @@ public class AddNhanVien extends AppCompatActivity {
         spPhongBan = findViewById(R.id.spTenPB);
         imgAnhDaiDien = findViewById(R.id.imgHinhDaiDien);
         edtLuong = findViewById(R.id.edtLuong);
-//        btnDatePicker = findViewById(R.id.btnDatePicker);
+
         btnAdd = findViewById(R.id.btnThem);
         imgAnhDaiDien.setImageResource(R.drawable.man);
 
@@ -75,13 +74,7 @@ public class AddNhanVien extends AppCompatActivity {
         spPhongBan.setAdapter(dataPhong);
         showDate(year, month + 1, day);
 
-        btnDatePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(1);
-                Toast.makeText(AddNhanVien.this, "Hello", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         imgAnhDaiDien.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,8 +168,8 @@ public class AddNhanVien extends AppCompatActivity {
     }
 
     private void showDate(int year, int month, int day) {
-        edtNgaySinh.setText(new StringBuilder().append(day > 9 ? day : "0" + day).append("/").append(month > 9 ?
-                month : "0" + month).append("/").append(year));
+        edtNgaySinh.setText(new StringBuilder().append("0").append("/").append(
+                "0").append("/").append(year));
     }
 
     private byte[] getByteArrayFromImageView(ImageView imgv) {

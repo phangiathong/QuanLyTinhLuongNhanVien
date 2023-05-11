@@ -12,14 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.quanlytinhluong.Interface.ChamCong.MainActivityChamCong;
-import com.example.quanlytinhluong.Interface.NhanVien.MainActivityNhanVien;
-import com.example.quanlytinhluong.Interface.PhongBan.MainActivityPhongBan;
+import com.example.quanlytinhluong.Interface.CheckOut.MainActivityChamCong;
+import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
+import com.example.quanlytinhluong.Interface.Departments.MainActivityPhongBan;
+import com.example.quanlytinhluong.Interface.Advance.MainActivityTamUng;
+import com.example.quanlytinhluong.Interface.TotalSalary.MainActivityTongLuong;
 import com.example.quanlytinhluong.R;
 
 public class MainActivityHome extends AppCompatActivity {
 
-    Button btnDSNhanVien, btnDanhSachPB, btnDSChamCong;
+    Button btnDSNhanVien, btnDanhSachPB, btnDSChamCong, btnDSTamUng, btnThongKe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,16 @@ public class MainActivityHome extends AppCompatActivity {
         btnDSNhanVien = findViewById(R.id.btnDSNhanVien);
         btnDanhSachPB = findViewById(R.id.btnDepartment);
         btnDSChamCong = findViewById(R.id.btnDSChamCong);
+        btnDSTamUng=findViewById(R.id.btnDSTamUng);
+        btnThongKe=findViewById(R.id.btnThongKe);
 
+        btnThongKe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivityTongLuong.class);
+                startActivity(intent);
+            }
+        });
         btnDSNhanVien.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
@@ -54,6 +65,14 @@ public class MainActivityHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnDSTamUng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivityTamUng.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -73,7 +92,7 @@ public class MainActivityHome extends AppCompatActivity {
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    finish();
+                    System.exit(0);
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

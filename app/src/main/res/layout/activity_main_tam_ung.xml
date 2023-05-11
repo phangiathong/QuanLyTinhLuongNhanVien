@@ -6,34 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_all"
-    tools:context=".Interface.Departments.MainActivityPhongBan">
-
+    tools:context=".Interface.Advance.MainActivityTamUng">
     <TextView
         android:fontFamily="@font/playfairdisplay_italic"
-        android:text="Danh Sách Phòng Ban"
+        android:text="Danh Sách Tạm Ứng"
         style="@style/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <ListView
-        android:id="@+id/lvPhongBan"
+        android:id="@+id/lvTamUng"
         style="@style/lv"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
-    <LinearLayout
-        style="@style/linear_h"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnThem"
-            android:background="@drawable/add"
-            android:layout_marginBottom="2dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-    </LinearLayout>
 
 </LinearLayout>

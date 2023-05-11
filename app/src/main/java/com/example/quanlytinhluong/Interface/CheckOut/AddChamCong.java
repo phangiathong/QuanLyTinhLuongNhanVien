@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.ChamCong;
+package com.example.quanlytinhluong.Interface.CheckOut;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.quanlytinhluong.CheckInfor;
 import com.example.quanlytinhluong.Database.DBChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
-import com.example.quanlytinhluong.Interface.NhanVien.MainActivityNhanVien;
+import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
 import com.example.quanlytinhluong.Model.ChamCong;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
@@ -39,18 +39,18 @@ public class AddChamCong extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         tvMaNhanVien = findViewById(R.id.tvMaNV);
-        tvTenNhanVien = findViewById(R.id.tvHoTen);
-        txtNgayChamCong = findViewById(R.id.txtNgayChamCong);
-        txtSoNgayCong = findViewById(R.id.txtSoNgayCong);
-        btnAdd = findViewById(R.id.btnthemCC);
-        calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
+        tvTenNhanVien=findViewById(R.id.tvHoTen);
+        txtNgayChamCong =findViewById(R.id.txtNgayChamCong);
+        txtSoNgayCong=findViewById(R.id.txtSoNgayCong);
+        btnAdd =findViewById(R.id.btnthemCC);
+        calendar =Calendar.getInstance();
+        year =calendar.get(Calendar.YEAR);
+        month= calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DATE);
 
         showDate(year, month + 1, day);
         String manv = getIntent().getExtras().getString("ma");
-        DBNhanVien dbNhanVien = new DBNhanVien(this);
+        DBNhanVien dbNhanVien= new DBNhanVien(this);
         dataNV = dbNhanVien.LayNhanVien(manv);
         tvMaNhanVien.setText(dataNV.get(0).getMaNV());
         tvTenNhanVien.setText(dataNV.get(0).getTenNV());

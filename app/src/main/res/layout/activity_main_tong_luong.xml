@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/linear_v"
     android:background="@drawable/background_all"
-    tools:context=".Interface.CheckOut.MainActivityChamCong">
+    android:orientation="vertical"
+    tools:context=".Interface.TotalSalary.MainActivityTongLuong">
     <TextView
-        android:fontFamily="@font/playfairdisplay_italic"
-        android:text="Danh Sách Chấm Công"
-        android:gravity="center"
-        style="@style/tv_title"
+        android:id="@+id/tieude"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="Tổng Lương Nhân Viên"
+        android:fontFamily="@font/playfairdisplay_italic"
+        style="@style/tv_title"/>
+
     <ListView
-        android:id="@+id/lvChamCong"
+        android:id="@+id/lvThongKe"
         style="@style/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:padding="5dp"/>
-
 </LinearLayout>

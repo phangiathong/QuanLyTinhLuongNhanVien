@@ -1,4 +1,4 @@
-package com.example.quanlytinhluong.Interface.NhanVien;
+package com.example.quanlytinhluong.Interface.Employee;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -32,21 +31,17 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class UpdateNhanVien extends AppCompatActivity {
 
     final int RESQUEST_TAKE_PHOTO = 123;
     final int REQUEST_CHOOSE_PHOTO = 321;
-    Calendar calendar;
-    int year, month, day;
     EditText edtTenNV, edtNgaySinh, edtLuong;
     TextView tvMa;
     Button btnUpdate, btnChonHinh;
     RadioButton radNam, radNu;
     Spinner spPhongBan;
     ImageView imgAnhDaiDien;
-    ImageButton btnDatePicker;
     ArrayList<NhanVien> dataNV = new ArrayList<>();
     DBPhongBan dbPhongBan;
     ArrayList<String> dsPhong;
@@ -69,7 +64,7 @@ public class UpdateNhanVien extends AppCompatActivity {
         radNu = findViewById(R.id.radNu);
         spPhongBan = findViewById(R.id.spTenPB);
         edtLuong = findViewById(R.id.edtLuong);
-//        btnDatePicker = findViewById(R.id.btnDatePicker);
+
         btnUpdate = findViewById(R.id.btnUpdate);
         btnChonHinh = findViewById(R.id.btnChonHinh);
         imgAnhDaiDien = findViewById(R.id.imgHinhDaiDien);

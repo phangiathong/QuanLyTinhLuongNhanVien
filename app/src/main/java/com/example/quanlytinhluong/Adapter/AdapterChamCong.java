@@ -17,9 +17,8 @@ import androidx.annotation.NonNull;
 
 import com.example.quanlytinhluong.Database.DBChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
-import com.example.quanlytinhluong.Interface.ChamCong.MainActivityChamCong;
-import com.example.quanlytinhluong.Interface.ChamCong.UpdateChamCong;
-import com.example.quanlytinhluong.Interface.NhanVien.MainActivityNhanVien;
+import com.example.quanlytinhluong.Interface.CheckOut.MainActivityChamCong;
+import com.example.quanlytinhluong.Interface.CheckOut.UpdateChamCong;
 import com.example.quanlytinhluong.Model.ChamCong;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
