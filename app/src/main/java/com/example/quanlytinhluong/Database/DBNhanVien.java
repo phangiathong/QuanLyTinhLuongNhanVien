@@ -10,6 +10,7 @@ import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.Model.PhongBan;
 import com.example.quanlytinhluong.Model.ThongKe;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DBNhanVien {
@@ -83,6 +84,34 @@ public class DBNhanVien {
             check = true;
         }
         return check;
+    }
+
+    //getData by name
+    public ArrayList<NhanVien> getDataByName(String input) {
+        ArrayList<NhanVien> data = new ArrayList<>();
+        String sql = "SELECT * FROM NhanVien WHERE tennv COLLATE UTF8CI LIKE '%"+input+"%'";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        try {
+            cursor.moveToFirst();
+            do {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setMaNV(cursor.getString(0));
+                nhanVien.setTenNV(cursor.getString(1));
+                nhanVien.setNgaySinh(cursor.getString(2));
+                nhanVien.setGioiTinh(cursor.getString(3));
+                nhanVien.setMaPhong(cursor.getString(4));
+                nhanVien.setBacLuong(cursor.getString(5));
+                nhanVien.setImage(cursor.getBlob(6));
+                Log.d("nv", nhanVien + "");
+                data.add(nhanVien);
+            }
+            while (cursor.moveToNext());
+            db.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return data;
     }
 
     public ArrayList<NhanVien> LayDSNhanVien() {
@@ -218,4 +247,6 @@ public class DBNhanVien {
         }
         return data;
     }
+
+
 }

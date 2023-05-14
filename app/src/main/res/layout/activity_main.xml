@@ -19,6 +19,40 @@
         android:fontFamily="@font/playfairdisplay_italic"
         style="@style/tv_title"/>
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtInput"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_background"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:hint="Tìm kiếm"
+                android:padding="10dp"/>
+
+            <Button
+                android:id="@+id/btnTim"
+                style="@style/button"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button_del"
+                android:text="Tìm"/>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
     <ListView
         android:id="@+id/lvNhanVien"
         style="@style/lv"

@@ -2,15 +2,19 @@ package com.example.quanlytinhluong.Interface.Employee;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.quanlytinhluong.Adapter.AdapterNhanVien;
 import com.example.quanlytinhluong.Database.DBNhanVien;
@@ -22,10 +26,14 @@ import java.util.ArrayList;
 
 public class MainActivityNhanVien extends AppCompatActivity {
 
-    Button btnThem;
+    Button btnThem, btnFind;
+    EditText edtInput;
     ListView lvDanhSachNV;
     AdapterNhanVien adapterNV;
     ArrayList<NhanVien> dataNV = new ArrayList<>();
+    DBNhanVien dbNhanVien;
+
+    int flag=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,13 @@ public class MainActivityNhanVien extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnThem=findViewById(R.id.btnThem);
+        btnFind=findViewById(R.id.btnTim);
+        edtInput=findViewById(R.id.edtInput);
         lvDanhSachNV = findViewById(R.id.lvNhanVien);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        dbNhanVien = new DBNhanVien(this);
 
         HienThiDL();
         btnThem.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +55,22 @@ public class MainActivityNhanVien extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddNhanVien.class);
                 startActivity(intent);
+            }
+        });
+
+        btnFind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataNV.clear();
+                String getInput=edtInput.getText().toString();
+                dataNV = dbNhanVien.getDataByName(getInput);
+                adapterNV =new AdapterNhanVien(MainActivityNhanVien.this, R.layout.custom_nhanvien, dataNV);
+                adapterNV.notifyDataSetChanged();
+                lvDanhSachNV.setAdapter(adapterNV);
+
+                if (dataNV.size()==0 || edtInput.getText().equals("")){
+                    Toast.makeText(getApplicationContext(), "Không Tìm Thấy!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -56,8 +86,10 @@ public class MainActivityNhanVien extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_actionbar, menu);
+//        getMenuInflater().inflate(R.menu.menu_all, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

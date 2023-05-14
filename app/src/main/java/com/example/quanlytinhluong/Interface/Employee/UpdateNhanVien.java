@@ -10,6 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -87,10 +89,10 @@ public class UpdateNhanVien extends AppCompatActivity {
         if (gioiTinh.equals("Nữ")){
             radNu.setChecked(true);
         }
-        phongBan = dataNV.get(0).getMaPhong();
-        if(phongBan != null) {
-            spPhongBan.setSelection(getIndex(spPhongBan, phongBan));
-        }
+
+        String tenPb = dbNhanVien.layTenPhong(dataNV.get(0).getMaPhong());
+        selectValue(spPhongBan, tenPb);
+
         edtLuong.setText(dataNV.get(0).getBacLuong());
         Bitmap bmHinhDaiDien = BitmapFactory.decodeByteArray(dataNV.get(0).getImage(), 0, dataNV.get(0).getImage().length);
         imgAnhDaiDien.setImageBitmap(bmHinhDaiDien);
@@ -139,10 +141,31 @@ public class UpdateNhanVien extends AppCompatActivity {
         }
         byte[] image = getByteArrayFromImageView(imgAnhDaiDien);
         nhanVien.setImage(image);
-        nhanVien.setMaPhong(spPhongBan.getSelectedItem().toString());
+
+//        String mapb = Integer.toString(spPhongBan.getSelectedItemPosition());
+
+        String maPb = getMapb(spPhongBan,spPhongBan.getSelectedItemPosition());
+
+        nhanVien.setMaPhong(maPb);
+
         nhanVien.setBacLuong(edtLuong.getText().toString());
         DBNhanVien dbNhanVien = new DBNhanVien(this);
         dbNhanVien.Sua(nhanVien);
+    }
+
+    public String getMapb(Spinner spinner,int position) {
+        String maPb="";
+        for (int i=0;i<=spinner.getCount();i++){
+            if (i == position) {
+                //Lấy tên phòng
+                String tenPb = spinner.getItemAtPosition(position).toString();
+                //Có tên rồi truy vấn ra mã phòng
+                maPb = dbPhongBan.layMaPhong(tenPb);
+                //Sau đó rồi set mã
+                Log.d("maPB",maPb);
+            }
+        }
+        return maPb;
     }
 
 
@@ -201,13 +224,12 @@ public class UpdateNhanVien extends AppCompatActivity {
     }
 
     //lấy vị trí phòng cần tìm trong spinner
-    private int getIndex(Spinner spinner, String key){
-        for (int i = 0; i < spinner.getCount(); i++){
-            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(key)){
-                return i;
+    private void selectValue(Spinner spinner,Object value){
+        for(int i=0;i<spinner.getCount();i++){
+            if(spinner.getItemAtPosition(i).equals(value)){
+                spinner.setSelection(i);
+                break;
             }
         }
-
-        return 0;
     }
 }

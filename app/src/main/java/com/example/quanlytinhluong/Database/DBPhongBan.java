@@ -113,4 +113,23 @@ public class DBPhongBan {
         return ds;
     }
 
+    public String layMaPhong(String tenPhong) {
+        String maPhong = "";
+        String sql = "SELECT mapb FROM PhongBan WHERE tenpb LIKE \"%" + tenPhong + "%\" ";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        try {
+            cursor.moveToFirst();
+            do {
+                PhongBan phongBan = new PhongBan();
+                phongBan.setMaPhong(cursor.getString(0));
+                maPhong = phongBan.getMaPhong();
+            }
+            while (cursor.moveToNext());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return maPhong;
+    }
+
 }
