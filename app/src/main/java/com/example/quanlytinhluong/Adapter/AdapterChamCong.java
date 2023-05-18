@@ -16,10 +16,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.quanlytinhluong.Database.DBChamCong;
+import com.example.quanlytinhluong.Database.DBNVChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Interface.CheckOut.MainActivityChamCong;
 import com.example.quanlytinhluong.Interface.CheckOut.UpdateChamCong;
 import com.example.quanlytinhluong.Model.ChamCong;
+import com.example.quanlytinhluong.Model.NVChamCong;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
 
@@ -82,8 +84,14 @@ public class AdapterChamCong extends ArrayAdapter {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //Xóa nhân viên ADmin chấm công
                         DBChamCong dbChamCong = new DBChamCong(getContext());
                         dbChamCong.xoaChamCong(chamCong);
+                        //Xóa nhân viên chấm công
+                        DBNVChamCong dbnvChamCong = new DBNVChamCong(getContext());
+                        NVChamCong nvChamCong = dbnvChamCong.LayNVChamCong(chamCong.getMaNV());
+                        dbnvChamCong.xoaNVChamCong(nvChamCong);
+
                         Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), MainActivityChamCong.class);
                         context.startActivity(intent);

@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.quanlytinhluong.CheckInfor;
+import com.example.quanlytinhluong.Database.DBAccount;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Database.DBPhongBan;
 import com.example.quanlytinhluong.Model.NhanVien;
@@ -38,7 +39,7 @@ public class AddNhanVien extends AppCompatActivity {
     final int REQUEST_CHOOSE_PHOTO = 321;
     Calendar calendar;
     int year, month, day;
-    EditText edtMaNV, edtTenNV, edtNgaySinh, edtLuong;
+    EditText edtMaNV, edtTenNV, edtNgaySinh, edtLuong, edtSdt, edtMk;
     RadioButton radNam, radNu;
     Spinner spPhongBan;
     ImageView imgAnhDaiDien;
@@ -53,8 +54,8 @@ public class AddNhanVien extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_nhan_vien);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
         edtMaNV = findViewById(R.id.txtMaNV);
         edtTenNV = findViewById(R.id.txtTenNV);
         edtNgaySinh = findViewById(R.id.txtNgaySinh);
@@ -64,6 +65,8 @@ public class AddNhanVien extends AppCompatActivity {
         spPhongBan = findViewById(R.id.spTenPB);
         imgAnhDaiDien = findViewById(R.id.imgHinhDaiDien);
         edtLuong = findViewById(R.id.edtLuong);
+        edtSdt = findViewById(R.id.txtSDT);
+        edtMk = findViewById(R.id.txtPassword);
 
         btnAdd = findViewById(R.id.btnThem);
         imgAnhDaiDien.setImageResource(R.drawable.man);
@@ -95,10 +98,13 @@ public class AddNhanVien extends AppCompatActivity {
             public void onClick(View v) {
                 DBNhanVien dbNhanVien = new DBNhanVien(getApplicationContext());
                 boolean check = dbNhanVien.checkMaNhanVien(edtMaNV.getText().toString());
-                if (edtMaNV.getText().toString().isEmpty() || edtTenNV.getText().toString().isEmpty() || edtLuong.getText().toString().isEmpty()) {
+                if (edtMaNV.getText().toString().isEmpty() || edtTenNV.getText().toString().isEmpty() || edtLuong.getText().toString().isEmpty() || edtSdt.getText().toString().isEmpty() || edtMk.getText().toString().isEmpty()) {
                     checkError.checkEmpty(edtMaNV,"Hãy nhập mã nhân viên");
                     checkError.checkEmpty(edtTenNV,"Hãy nhập tên nhân viên");
                     checkError.checkEmpty(edtLuong,"Vui nhập hệ số lương");
+                    checkError.checkEmpty(edtSdt,"Vui nhập số điện thoại");
+                    checkError.checkEmpty(edtMk,"Vui nhập mật khẩu");
+
                 } else if (check == true) {
                     edtMaNV.setError("Mã nhân viên đã tồn tại");
                     edtMaNV.isFocused();
@@ -116,8 +122,13 @@ public class AddNhanVien extends AppCompatActivity {
     private void ThemDL() {
         DBNhanVien dbNhanVien = new DBNhanVien(getApplicationContext());
         NhanVien nhanVien = new NhanVien();
-        nhanVien.setMaNV(edtMaNV.getText().toString());
+        String sdt = edtSdt.getText().toString();
+        String matkhau = edtMk.getText().toString();
+        String manv = edtMaNV.getText().toString();
+        nhanVien.setMaNV(manv);
         nhanVien.setTenNV(edtTenNV.getText().toString());
+        nhanVien.setSdt(sdt);
+        nhanVien.setMatkhau(matkhau);
         nhanVien.setNgaySinh(edtNgaySinh.getText().toString());
         if (radNu.isChecked() == true) {
             nhanVien.setGioiTinh("Nữ");
@@ -133,6 +144,18 @@ public class AddNhanVien extends AppCompatActivity {
         byte[] image = getByteArrayFromImageView(imgAnhDaiDien);
         nhanVien.setImage(image);
         dbNhanVien.Them(nhanVien);
+
+        //Thêm account
+        new DBAccount(getApplicationContext()).themAccount(sdt, matkhau, manv, new DBAccount.onClickListenerRs() {
+            @Override
+            public void success() {
+                Toast.makeText(getApplicationContext(), "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void fail() {
+                Toast.makeText(getApplicationContext(), "Đăng Ký Thất Bại", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

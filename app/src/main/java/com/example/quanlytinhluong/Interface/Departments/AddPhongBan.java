@@ -31,8 +31,8 @@ public class AddPhongBan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_phong_ban);
         dbHelper = new DBHelper(this);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar=getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
         dbPhongBan = new DBPhongBan(this);
 
         setControl();

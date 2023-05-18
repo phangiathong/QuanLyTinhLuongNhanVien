@@ -30,7 +30,7 @@
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/playfairdisplay_italic"
         android:gravity="center"
-        android:text="Quản Lý Tính Lương"
+        android:text="ADMIN"
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold" />

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.quanlytinhluong.CheckInfor;
 import com.example.quanlytinhluong.Database.DBChamCong;
+import com.example.quanlytinhluong.Database.DBNVChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
 import com.example.quanlytinhluong.Model.ChamCong;
@@ -55,6 +57,13 @@ public class AddChamCong extends AppCompatActivity {
         tvMaNhanVien.setText(dataNV.get(0).getMaNV());
         tvTenNhanVien.setText(dataNV.get(0).getTenNV());
 
+        //Lấy số công nhân viên
+        DBNVChamCong dbnvChamCong = new DBNVChamCong(this);
+        int soCongNV = dbnvChamCong.LaySoCongNV(manv);
+        Log.d("soCong",soCongNV+"");
+        String soCong = Integer.toString(soCongNV);
+        txtSoNgayCong.setText(soCong);
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,11 +78,20 @@ public class AddChamCong extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    themChamCong();
-                    Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddChamCong.this, MainActivityChamCong.class);
-                    startActivity(intent);
-                    finish();
+
+                    int soCong = Integer.parseInt(txtSoNgayCong.getText().toString());
+                    if (soCong>30) {
+                        Toast.makeText(getApplicationContext(), "Bạn đã nhập quá công!", Toast.LENGTH_SHORT).show();
+                    }else if(soCong < 0){
+                        Toast.makeText(getApplicationContext(), "Không nhập số âm!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        themChamCong();
+                        Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AddChamCong.this, MainActivityChamCong.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
                 }
             }
         });
@@ -88,6 +106,7 @@ public class AddChamCong extends AppCompatActivity {
         chamCong.setSoNgayCong(txtSoNgayCong.getText().toString());
         DBChamCong dbChamCong = new DBChamCong(getApplicationContext());
         dbChamCong.themChamCong(chamCong);
+
     }
 
     private void showDate(int year, int month, int day) {

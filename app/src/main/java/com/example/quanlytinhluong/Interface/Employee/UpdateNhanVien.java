@@ -38,7 +38,7 @@ public class UpdateNhanVien extends AppCompatActivity {
 
     final int RESQUEST_TAKE_PHOTO = 123;
     final int REQUEST_CHOOSE_PHOTO = 321;
-    EditText edtTenNV, edtNgaySinh, edtLuong;
+    EditText edtTenNV, edtNgaySinh, edtLuong, edtSDT, edtMk;
     TextView tvMa;
     Button btnUpdate, btnChonHinh;
     RadioButton radNam, radNu;
@@ -66,6 +66,8 @@ public class UpdateNhanVien extends AppCompatActivity {
         radNu = findViewById(R.id.radNu);
         spPhongBan = findViewById(R.id.spTenPB);
         edtLuong = findViewById(R.id.edtLuong);
+        edtSDT = findViewById(R.id.txtSDTnv);
+        edtMk = findViewById(R.id.txtPasswordnv);
 
         btnUpdate = findViewById(R.id.btnUpdate);
         btnChonHinh = findViewById(R.id.btnChonHinh);
@@ -76,11 +78,14 @@ public class UpdateNhanVien extends AppCompatActivity {
         dsPhong= dbPhongBan.LayDSPhong();
         adapterPB = new ArrayAdapter<>(UpdateNhanVien.this, android.R.layout.simple_spinner_item, dsPhong);
         spPhongBan.setAdapter(adapterPB);
+
         String masv = getIntent().getExtras().getString("manv");
         DBNhanVien dbNhanVien  =new DBNhanVien(this);
         dataNV = dbNhanVien.LayNhanVien(masv);
         tvMa.setText(dataNV.get(0).getMaNV());
         edtTenNV.setText(dataNV.get(0).getTenNV());
+        edtSDT.setText(dataNV.get(0).getSdt());
+        edtMk.setText(dataNV.get(0).getMatkhau());
         edtNgaySinh.setText(dataNV.get(0).getNgaySinh());
         gioiTinh = dataNV.get(0).getGioiTinh();
         if (gioiTinh.equals("Nam")) {
@@ -114,9 +119,12 @@ public class UpdateNhanVien extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtTenNV.getText().toString().isEmpty() ||edtLuong.getText().toString().isEmpty()) {
+                if (edtTenNV.getText().toString().isEmpty() ||edtLuong.getText().toString().isEmpty() || edtSDT.getText().toString().isEmpty() || edtMk.getText().toString().isEmpty()) {
                     checkError.checkEmpty(edtTenNV,"Hãy nhập tên nhân viên");
                     checkError.checkEmpty(edtLuong,"Hãy nhập hệ số lương");
+                    checkError.checkEmpty(edtSDT,"Hãy nhập số điện thoại");
+                    checkError.checkEmpty(edtMk,"Hãy nhập mật khẩu");
+
                 } else {
                     UpdateDL();
                     Toast.makeText(UpdateNhanVien.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
@@ -132,6 +140,8 @@ public class UpdateNhanVien extends AppCompatActivity {
         NhanVien nhanVien = new NhanVien();
         nhanVien.setMaNV(tvMa.getText().toString());
         nhanVien.setTenNV(edtTenNV.getText().toString());
+        nhanVien.setSdt(edtSDT.getText().toString());
+        nhanVien.setMatkhau(edtMk.getText().toString());
         nhanVien.setNgaySinh(edtNgaySinh.getText().toString());
         if (radNam.isChecked()) {
             nhanVien.setGioiTinh("Nam");
@@ -167,7 +177,6 @@ public class UpdateNhanVien extends AppCompatActivity {
         }
         return maPb;
     }
-
 
     private void choosePhoto(){
         Intent intent = new Intent(Intent.ACTION_PICK);

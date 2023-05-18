@@ -92,6 +92,8 @@ public class MainActivityHome extends AppCompatActivity {
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(getApplicationContext(),MainActivityLogin.class);
+                    startActivity(intent);
                     System.exit(0);
                 }
             });

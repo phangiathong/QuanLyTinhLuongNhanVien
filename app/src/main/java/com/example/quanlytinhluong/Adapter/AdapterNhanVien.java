@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.quanlytinhluong.Database.DBAccount;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Interface.CheckOut.AddChamCong;
 import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
@@ -36,6 +38,7 @@ public class AdapterNhanVien extends ArrayAdapter {
     int resource;
     ArrayList<NhanVien> data;
     final DBNhanVien dbNhanVien = new DBNhanVien(getContext());
+    DBAccount dbAccount = new DBAccount(getContext());
     Locale localeVN = new Locale("vi", "VN");
     NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
 
@@ -53,7 +56,7 @@ public class AdapterNhanVien extends ArrayAdapter {
     }
 
     private static class Holder {
-        TextView tvMaNV,  tvTenNV, tvNgaySinh, tvGioiTinh, tvPhongBan, tvLuong;
+        TextView tvMaNV,  tvTenNV, tvNgaySinh, tvGioiTinh, tvPhongBan, tvLuong, tvSdt, tvMk;
         ImageView imgAnhDaiDien;
         Button btnXoa, btnSua;
         Button btnChamCong, btnTamUng;
@@ -68,6 +71,8 @@ public class AdapterNhanVien extends ArrayAdapter {
             view = LayoutInflater.from(context).inflate(resource, null);
             holder.tvMaNV = view.findViewById(R.id.tvMaNV);
             holder.tvTenNV = view.findViewById(R.id.tvTenNV);
+            holder.tvSdt = view.findViewById(R.id.tvSDT);
+            holder.tvMk = view.findViewById(R.id.tvPassword);
             holder.tvNgaySinh = view.findViewById(R.id.tvNgaySinh);
             holder.tvGioiTinh = view.findViewById(R.id.tvGioiTinh);
             holder.tvPhongBan = view.findViewById(R.id.tvPhongBan);
@@ -84,8 +89,13 @@ public class AdapterNhanVien extends ArrayAdapter {
 
         final NhanVien nhanVien = data.get(position);
 
+        Log.d("nhanvien",nhanVien+"");
+
         holder.tvMaNV.setText(nhanVien.getMaNV());
         holder.tvTenNV.setText(nhanVien.getTenNV());
+        holder.tvSdt.setText(nhanVien.getSdt());
+        holder.tvMk.setText(nhanVien.getMatkhau());
+
         holder.tvNgaySinh.setText(nhanVien.getNgaySinh());
         if (nhanVien.getGioiTinh().equals("Nam")) {
             holder.tvGioiTinh.setText(nhanVien.getGioiTinh());
@@ -97,7 +107,7 @@ public class AdapterNhanVien extends ArrayAdapter {
 //        holder.tvPhongBan.setText(nhanVien.getMaPhong() );
         holder.tvPhongBan.setText(dbNhanVien.layTenPhong(nhanVien.getMaPhong()));
 
-        holder.tvLuong.setText(currencyVN.format(Integer.parseInt(nhanVien.getBacLuong())) + " VND");
+        holder.tvLuong.setText(currencyVN.format(Integer.parseInt(nhanVien.getBacLuong())));
         if(nhanVien.getImage() == null){
             holder.imgAnhDaiDien.setImageResource(R.drawable.man);
         }
@@ -153,6 +163,7 @@ public class AdapterNhanVien extends ArrayAdapter {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dbNhanVien.Xoa(nhanVien);
+                            dbAccount.XoaAccount(nhanVien);
                             Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getContext(), MainActivityNhanVien.class);
                             context.startActivity(intent);

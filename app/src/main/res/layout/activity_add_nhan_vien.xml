@@ -36,7 +36,7 @@
 
     <LinearLayout
         style="@style/linear_h"
-        android:padding="10dp"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -58,7 +58,7 @@
     </LinearLayout>
     <LinearLayout
         style="@style/linear_h"
-        android:padding="10dp"
+        android:padding="5dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -81,9 +81,57 @@
     </LinearLayout>
 
     <LinearLayout
+        style="@style/linear_h"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="SDT" />
+
+        <EditText
+            android:id="@+id/txtSDT"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/linear_h"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:text="Mật khẩu" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            style="@style/edttext"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:background="@drawable/edittext_background"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="5dp"
         >
 
         <TextView
@@ -115,7 +163,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:padding="10dp"
+        android:padding="5dp"
         >
         <TextView
             android:fontFamily="@font/playfairdisplay_italic"
@@ -145,7 +193,7 @@
 
     <LinearLayout
         style="@style/linear_h"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <TextView
             android:fontFamily="@font/playfairdisplay_italic"
@@ -162,13 +210,13 @@
 
     <LinearLayout
         style="@style/linear_h"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <TextView
             android:fontFamily="@font/playfairdisplay_italic"
             style="@style/tv_noidung"
             android:layout_width="94dp"
-            android:text="@string/hesoluong" />
+            android:text="Tiền lương" />
         <EditText
             android:id="@+id/edtLuong"
             style="@style/edttext"
@@ -183,7 +231,7 @@
         android:id="@+id/btnThem"
         style="@style/button"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/button_del"
         android:text="@string/them"/>
 

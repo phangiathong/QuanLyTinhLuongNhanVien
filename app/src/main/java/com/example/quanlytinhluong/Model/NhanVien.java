@@ -3,8 +3,24 @@ package com.example.quanlytinhluong.Model;
 import java.util.Arrays;
 
 public class NhanVien {
-    String maNV, tenNV, ngaySinh, gioiTinh, maPhong, bacLuong;
+    String maNV, tenNV, ngaySinh, gioiTinh, maPhong, bacLuong, sdt, matkhau;
     byte[] image;
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getMatkhau() {
+        return matkhau;
+    }
+
+    public void setMatkhau(String matkhau) {
+        this.matkhau = matkhau;
+    }
 
     public String getMaNV() {
         return maNV;
@@ -67,6 +83,8 @@ public class NhanVien {
         return "NhanVien{" +
                 "maNV='" + maNV + '\'' +
                 ", tenNV='" + tenNV + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", matkhau='" + matkhau + '\'' +
                 ", ngaySinh='" + ngaySinh + '\'' +
                 ", gioiTinh='" + gioiTinh + '\'' +
                 ", maPhong='" + maPhong + '\'' +

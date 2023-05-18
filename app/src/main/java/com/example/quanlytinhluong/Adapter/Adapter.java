@@ -21,9 +21,9 @@ public class Adapter extends FragmentPagerAdapter {
             case 0:
                 Login login = new Login();
                 return login;
-            case 1:
-                SignUp signUp = new SignUp();
-                return signUp;
+//            case 1:
+//                SignUp signUp = new SignUp();
+//                return signUp;
             default:
                 return null;
         }
@@ -36,14 +36,14 @@ public class Adapter extends FragmentPagerAdapter {
         if(position==0){
             title="Đăng Nhập";
         }
-        else {
-            title = "Đăng Ký";
-        }
+//        else {
+//            title = "Đăng Ký";
+//        }
         return title;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 1;
     }
 }

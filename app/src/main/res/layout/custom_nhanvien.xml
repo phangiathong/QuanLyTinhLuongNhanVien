@@ -45,6 +45,38 @@
                     style="@style/tv_noidung" />
             </LinearLayout>
 
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/playfairdisplay_italic"
+                    style="@style/tv_noidung"
+                    android:layout_width="96dp"
+                    android:text="SDT" />
+                <TextView
+                    android:id="@+id/tvSDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_noidung" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/playfairdisplay_italic"
+                    style="@style/tv_noidung"
+                    android:layout_width="96dp"
+                    android:text="Mật khẩu" />
+                <TextView
+                    android:id="@+id/tvPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tv_noidung" />
+            </LinearLayout>
+
 
 
             <LinearLayout

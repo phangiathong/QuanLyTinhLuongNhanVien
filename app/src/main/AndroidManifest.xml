@@ -20,6 +20,9 @@
         android:theme="@style/Theme.QuanLyTinhLuong"
         tools:targetApi="31">
         <activity
+            android:name=".Interface.MainActivityAccounts"
+            android:exported="false" />
+        <activity
             android:name=".Interface.TotalSalary.ChiTietTongLuong"
             android:exported="false" />
         <activity
@@ -59,13 +62,13 @@
             android:name=".Interface.Employee.AddNhanVien"
             android:exported="false" />
         <activity
-            android:name=".Interface.MainActivityLogin"
+            android:name=".Interface.MainActivityHome"
             android:exported="false" />
         <activity
             android:name=".Interface.Employee.MainActivityNhanVien"
             android:exported="false" />
         <activity
-            android:name=".Interface.MainActivityHome"
+            android:name=".Interface.MainActivityLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

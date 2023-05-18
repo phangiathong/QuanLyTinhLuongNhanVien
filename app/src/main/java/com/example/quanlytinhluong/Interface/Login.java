@@ -2,6 +2,7 @@ package com.example.quanlytinhluong.Interface;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,26 +71,42 @@ public class Login extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = uname.getText().toString();
+                String sdt = uname.getText().toString();
                 String password = pass.getText().toString();
-                new DBAccount(getContext()).checkLogin(username, new DBAccount.onClickListener() {
-                    @Override
-                    public void success(String mk) {
-                        if (password.equals(mk)) {
-                            Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getContext(), MainActivityHome.class));
+                Log.d("tk", sdt + password);
+
+                if (sdt.equals("phan") && password.equals("123")){
+                    startActivity(new Intent(getContext(),MainActivityHome.class));
                             uname.setText("");
                             pass.setText("");
-                        } else {
-                            Toast.makeText(getContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
+                }else {
+                    new DBAccount(getContext()).checkLogin(sdt, new DBAccount.onClickListener() {
+                        @Override
+                        public void success(String mk) {
+                            if (password.equals(mk)) {
+                                Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(getContext(), MainActivityAccounts.class));
+                                Intent intent = new Intent(getContext(),MainActivityAccounts.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("sdt", sdt);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                                uname.setText("");
+                                pass.setText("");
+                            } else {
+                                Toast.makeText(getContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void fail() {
-                        Toast.makeText(getContext(), "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void fail() {
+                            Toast.makeText(getContext(), "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+//                    Toast.makeText(getContext(), "Kiểm tra lại tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -98,8 +115,8 @@ public class Login extends Fragment {
             public void onClick(View view) {
                 FlatDialog flatDialog = new FlatDialog(getContext());
                 flatDialog.setTitle("Quên mật khẩu")
-                        .setSubtitle("Nhập số điện thoại của bạn")
-                        .setFirstTextFieldHint("Số điện thoại")
+                        .setSubtitle("Nhập mã của bạn")
+                        .setFirstTextFieldHint("Nhập mã")
                         .setFirstButtonText("Hủy")
                         .setSecondButtonText("Xác nhận")
                         .withFirstButtonListner(new View.OnClickListener() {
@@ -111,8 +128,8 @@ public class Login extends Fragment {
                         .withSecondButtonListner(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                String username =flatDialog.getFirstTextField();
-                                new DBAccount(getContext()).checkPhone(username, new DBAccount.onClickListenerForgot() {
+                                String manv =flatDialog.getFirstTextField();
+                                new DBAccount(getContext()).checkManv(manv, new DBAccount.onClickListenerForgot() {
                                     @Override
                                     public void success(String pass) {
                                         flatDialog.dismiss();
@@ -133,7 +150,7 @@ public class Login extends Fragment {
                                     public void fail() {
                                         flatDialog.dismiss();
                                         FlatDialog flatDialog1 = new FlatDialog(getContext());
-                                        flatDialog1.setTitle("Số điện thoại không tồn tại")
+                                        flatDialog1.setTitle("Mã không tồn tại")
                                                 .setSubtitle("Vui lòng kiểm tra lại")
                                                 .setFirstButtonText("Đóng")
                                                 .withFirstButtonListner(new View.OnClickListener() {

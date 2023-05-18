@@ -26,6 +26,8 @@ public class DBNhanVien {
         ContentValues values = new ContentValues();
         values.put("manv", nhanVien.getMaNV());
         values.put("tennv", nhanVien.getTenNV());
+        values.put("sdt", nhanVien.getSdt());
+        values.put("password", nhanVien.getMatkhau());
         values.put("ngaysinh", nhanVien.getNgaySinh());
         values.put("gioitinh", nhanVien.getGioiTinh());
         values.put("mapb", nhanVien.getMaPhong());
@@ -98,12 +100,14 @@ public class DBNhanVien {
                 NhanVien nhanVien = new NhanVien();
                 nhanVien.setMaNV(cursor.getString(0));
                 nhanVien.setTenNV(cursor.getString(1));
-                nhanVien.setNgaySinh(cursor.getString(2));
-                nhanVien.setGioiTinh(cursor.getString(3));
-                nhanVien.setMaPhong(cursor.getString(4));
-                nhanVien.setBacLuong(cursor.getString(5));
-                nhanVien.setImage(cursor.getBlob(6));
-                Log.d("nv", nhanVien + "");
+                nhanVien.setSdt(cursor.getString(2));
+                nhanVien.setMatkhau(cursor.getString(3));
+                nhanVien.setNgaySinh(cursor.getString(4));
+                nhanVien.setGioiTinh(cursor.getString(5));
+                nhanVien.setMaPhong(cursor.getString(6));
+                nhanVien.setBacLuong(cursor.getString(7));
+                nhanVien.setImage(cursor.getBlob(8));
+//                Log.d("nv", nhanVien + "");
                 data.add(nhanVien);
             }
             while (cursor.moveToNext());
@@ -126,11 +130,14 @@ public class DBNhanVien {
                 NhanVien nhanVien = new NhanVien();
                 nhanVien.setMaNV(cursor.getString(0));
                 nhanVien.setTenNV(cursor.getString(1));
-                nhanVien.setNgaySinh(cursor.getString(2));
-                nhanVien.setGioiTinh(cursor.getString(3));
-                nhanVien.setMaPhong(cursor.getString(4));
-                nhanVien.setBacLuong(cursor.getString(5));
-                nhanVien.setImage(cursor.getBlob(6));
+                nhanVien.setSdt(cursor.getString(2));
+                nhanVien.setMatkhau(cursor.getString(3));
+
+                nhanVien.setNgaySinh(cursor.getString(4));
+                nhanVien.setGioiTinh(cursor.getString(5));
+                nhanVien.setMaPhong(cursor.getString(6));
+                nhanVien.setBacLuong(cursor.getString(7));
+                nhanVien.setImage(cursor.getBlob(8));
                 Log.d("nv", nhanVien + "");
                 data.add(nhanVien);
             }
@@ -169,6 +176,37 @@ public class DBNhanVien {
         return check;
     }
 
+    //Lấy thông tin nhân viên qua sdt
+    public ArrayList<NhanVien> LayNVBySDT(String sdt) {
+        ArrayList<NhanVien> data = new ArrayList<>();
+        String sql = "select * from NhanVien where sdt ='" + sdt + "'";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        try {
+            cursor.moveToFirst();
+            do {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setMaNV(cursor.getString(0));
+                nhanVien.setTenNV(cursor.getString(1));
+                nhanVien.setSdt(cursor.getString(2));
+                nhanVien.setMatkhau(cursor.getString(3));
+                nhanVien.setNgaySinh(cursor.getString(4));
+                nhanVien.setGioiTinh(cursor.getString(5));
+                nhanVien.setMaPhong(cursor.getString(6));
+                nhanVien.setBacLuong(cursor.getString(7));
+                nhanVien.setImage(cursor.getBlob(8));
+                data.add(nhanVien);
+            }
+            while (cursor.moveToNext());
+            db.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return data;
+    }
+
     public ArrayList<NhanVien> LayNhanVien(String manv) {
         ArrayList<NhanVien> data = new ArrayList<>();
         String sql = "select * from NhanVien where manv ='" + manv + "'";
@@ -181,11 +219,13 @@ public class DBNhanVien {
                 NhanVien nhanVien = new NhanVien();
                 nhanVien.setMaNV(cursor.getString(0));
                 nhanVien.setTenNV(cursor.getString(1));
-                nhanVien.setNgaySinh(cursor.getString(2));
-                nhanVien.setGioiTinh(cursor.getString(3));
-                nhanVien.setMaPhong(cursor.getString(4));
-                nhanVien.setBacLuong(cursor.getString(5));
-                nhanVien.setImage(cursor.getBlob(6));
+                nhanVien.setSdt(cursor.getString(2));
+                nhanVien.setMatkhau(cursor.getString(3));
+                nhanVien.setNgaySinh(cursor.getString(4));
+                nhanVien.setGioiTinh(cursor.getString(5));
+                nhanVien.setMaPhong(cursor.getString(6));
+                nhanVien.setBacLuong(cursor.getString(7));
+                nhanVien.setImage(cursor.getBlob(8));
                 data.add(nhanVien);
             }
             while (cursor.moveToNext());
@@ -204,6 +244,8 @@ public class DBNhanVien {
         ContentValues values = new ContentValues();
         values.put("manv", nhanVien.getMaNV());
         values.put("tennv", nhanVien.getTenNV());
+        values.put("sdt", nhanVien.getSdt());
+        values.put("password", nhanVien.getMatkhau());
         values.put("ngaysinh", nhanVien.getNgaySinh());
         values.put("gioitinh", nhanVien.getGioiTinh());
         values.put("mapb", nhanVien.getMaPhong());
