@@ -24,8 +24,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlytinhluong.CheckInfor;
+import com.example.quanlytinhluong.Database.DBAccount;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Database.DBPhongBan;
+import com.example.quanlytinhluong.Model.Accounts;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
 
@@ -161,6 +163,13 @@ public class UpdateNhanVien extends AppCompatActivity {
         nhanVien.setBacLuong(edtLuong.getText().toString());
         DBNhanVien dbNhanVien = new DBNhanVien(this);
         dbNhanVien.Sua(nhanVien);
+        DBAccount dbAccount = new DBAccount(this);
+        Accounts accounts = new Accounts();
+        accounts.setManv(tvMa.getText().toString());
+        accounts.setSdt(edtSDT.getText().toString());
+        accounts.setPassword(edtMk.getText().toString());
+        dbAccount.suaAccount(accounts);
+
     }
 
     public String getMapb(Spinner spinner,int position) {

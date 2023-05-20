@@ -101,12 +101,12 @@
             style="@style/tv_noidung"
             android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:text="Số ngày công" />
+            android:text="Số công" />
 
         <EditText
             android:id="@+id/txtSoNgayCong"
             style="@style/edttext"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingLeft="15dp"
             android:background="@drawable/edittext_background"
             android:layout_width="match_parent"

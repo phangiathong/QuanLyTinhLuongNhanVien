@@ -32,8 +32,6 @@ public class MainActivityAccounts extends AppCompatActivity {
     Button btnCheckin, btnCheckout;
 
     TextView txtTennv, txtManv, txtPhongban, txtNgaythang;
-
-    DBPhongBan dbPhongBan;
     ArrayList<NhanVien> dataNV = new ArrayList<>();
 
     Calendar calendar;
@@ -41,7 +39,6 @@ public class MainActivityAccounts extends AppCompatActivity {
     int count=0;
     int hour, minute, second;
     int soCong = 0;
-    boolean isCheckin, isCheckout;
     Calendar currentTime;
     DBChamCong dbChamCong;
 
@@ -68,40 +65,50 @@ public class MainActivityAccounts extends AppCompatActivity {
 //        Log.d("sdt", sdt);
         DBNhanVien dbNhanVien  =new DBNhanVien(this);
         dataNV = dbNhanVien.LayNVBySDT(sdt);
-//        Log.d("inforNV", dataNV+"");
+        //Lưu trạng thái
+        int isCheckin = dbNhanVien.LayCheckin(sdt);
+        int isCheckout = dbNhanVien.LayCheckout(sdt);
+        Log.d("check", isCheckin+" va "+ isCheckout);
+
         txtTennv.setText(dataNV.get(0).getTenNV());
         String manv = dataNV.get(0).getMaNV();
         txtManv.setText(manv);
         String tenPb = dbNhanVien.layTenPhong(dataNV.get(0).getMaPhong());
         txtPhongban.setText(tenPb);
-        btnCheckout.setEnabled(false);
+
+        if (isCheckin==0){
+            btnCheckin.setEnabled(true);
+            btnCheckout.setEnabled(false);
+
+        }else {
+            btnCheckin.setEnabled(false);
+            btnCheckout.setEnabled(true);
+        }
 
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.d("now", currentTime.getTime()+"");
-//                SimpleDateFormat
-                isCheckin=true;
-                isCheckout=false;
-//                content();
 
                 //Phải cho hơn 1s thì mới >= được vì tính giây nữa
-                String startTime = "21:17:00";
+                String startTime = "17:30:00";
 
                 long difference = getTimeToCheck(startTime);
-                //
 
                 Log.d("gio", difference+"");
 
-                if (difference>=0){
-                    Toast.makeText(getApplicationContext(), "Bạn đã đi muộn", Toast.LENGTH_SHORT).show();
-                    btnCheckout.setEnabled(false);
-                }else {
-                    Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
-                    btnCheckin.setEnabled(false);
-                    btnCheckout.setEnabled(true);
-                    count +=1;
-                }
+                    if (difference>=0){
+                        Toast.makeText(getApplicationContext(), "Bạn đã đi muộn", Toast.LENGTH_SHORT).show();
+                        btnCheckout.setEnabled(false);
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
+
+                        //isCheckin đang là 0, isCheckout đang là 1
+                        //update isCheckin = 1, isCheckout = 0
+                        dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
+                        btnCheckin.setEnabled(false);
+                        btnCheckout.setEnabled(true);
+                        count +=1;
+                    }
 
                 //Checkout: khi bấm differen >=0 là đúng giờ, tính công
                 //Nếu đi muộn thì không checkout được nữa - disble
@@ -114,21 +121,26 @@ public class MainActivityAccounts extends AppCompatActivity {
             public void onClick(View v) {
                 DBNVChamCong dbNgayCong = new DBNVChamCong(getApplicationContext());
                 NVChamCong nvChamCong = new NVChamCong();
-                isCheckin=false;
-                isCheckout=true;
 
-                String endTime = "21:18:00";
+                String endTime = "17:31:00";
                 long difference = getTimeToCheck(endTime);
 
-                if (difference<=0){
+                if (difference<=0) {
                     Toast.makeText(getApplicationContext(), "Chưa đủ công", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
                     count+=1;
-                    btnCheckout.setEnabled(false);
-                }
 
-                if(count==2) {
+//                    DBNhanVien dbNhanVien  =new DBNhanVien(getApplicationContext());
+//                    //Lưu trạng thái
+//                    int isCheckin = dbNhanVien.LayCheckin(sdt);
+//                    int isCheckout = dbNhanVien.LayCheckout(sdt);
+//                    Log.d("check",isCheckin + "- "+isCheckout);
+                    //isCheckin đang là 1, isCheckout đang là 0
+                    //update isCheckin = 0, isCheckout = 1
+                    dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
+                    btnCheckout.setEnabled(false);
+
                     soCong+=1;
                     Log.d("cong",count+" Một công");
                     String cong = Integer.toString(soCong);
@@ -138,8 +150,8 @@ public class MainActivityAccounts extends AppCompatActivity {
                     Log.d("nvChamCong",nvChamCong.toString());
 
                     dbNgayCong.themNgayCong(nvChamCong);
-                    count=0;
                 }
+
             }
         });
     }

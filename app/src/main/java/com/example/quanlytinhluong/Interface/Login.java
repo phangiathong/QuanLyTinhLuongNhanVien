@@ -1,6 +1,7 @@
 package com.example.quanlytinhluong.Interface;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.flatdialoglibrary.dialog.FlatDialog;
 import com.example.quanlytinhluong.Database.DBAccount;
+import com.example.quanlytinhluong.Model.Accounts;
 import com.example.quanlytinhluong.R;
 
 
@@ -42,6 +44,8 @@ public class Login extends Fragment {
         pass=viewGroup.findViewById(R.id.password);
         login=viewGroup.findViewById(R.id.login_btn);
         textView=viewGroup.findViewById(R.id.forgot_pass);
+        uname.requestFocus();
+
         uname.setTranslationX(300);
         uname.setAlpha(0);
         uname.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(700).start();
@@ -74,8 +78,24 @@ public class Login extends Fragment {
                 String sdt = uname.getText().toString();
                 String password = pass.getText().toString();
                 Log.d("tk", sdt + password);
+                DBAccount dbAccount = new DBAccount(getContext());
+                Cursor cursor = dbAccount.checkAdminExist("0164");
+                if (cursor.getCount() == 0) {
+                    new DBAccount(getContext()).themAccount("0164", "123", "147", new DBAccount.onClickListenerRs() {
+                        @Override
+                        public void success() {
+//                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                        }
+                        @Override
+                        public void fail() {
+//                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
 
-                if (sdt.equals("phan") && password.equals("123")){
+                Accounts accounts = new Accounts();
+                accounts = dbAccount.layAdmin("0164");
+                if (sdt.equals(accounts.getSdt()) && password.equals(accounts.getPassword())){
                     startActivity(new Intent(getContext(),MainActivityHome.class));
                             uname.setText("");
                             pass.setText("");
@@ -168,5 +188,4 @@ public class Login extends Fragment {
             }
         });
     }
-
 }

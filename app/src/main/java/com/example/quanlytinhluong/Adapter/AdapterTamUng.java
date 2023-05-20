@@ -73,7 +73,7 @@ public class AdapterTamUng extends ArrayAdapter {
             holder = (AdapterTamUng.Holder) view.getTag();
 
         final TamUng tamUng = data.get(position);
-        holder.tvSoPhieu.setText(tamUng.getSoPhieu());
+//        holder.tvSoPhieu.setText(tamUng.getSoPhieu());
         holder.tvMaNV.setText(tamUng.getMaNV());
         holder.tvSoTien.setText(currencyVN.format(Integer.parseInt(tamUng.getSoTienUng())));
         holder.tvNgayUng.setText(tamUng.getNgayTamUng());

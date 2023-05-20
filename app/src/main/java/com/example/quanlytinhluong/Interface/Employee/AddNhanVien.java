@@ -54,8 +54,8 @@ public class AddNhanVien extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_nhan_vien);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         edtMaNV = findViewById(R.id.txtMaNV);
         edtTenNV = findViewById(R.id.txtTenNV);
         edtNgaySinh = findViewById(R.id.txtNgaySinh);
@@ -196,7 +196,6 @@ public class AddNhanVien extends AppCompatActivity {
     }
 
     private byte[] getByteArrayFromImageView(ImageView imgv) {
-
         BitmapDrawable drawable = (BitmapDrawable) imgv.getDrawable();
         Bitmap bmp = drawable.getBitmap();
         bmp = Bitmap.createScaledBitmap(bmp, 80, 80, true);

@@ -89,9 +89,9 @@ public class DBNhanVien {
     }
 
     //getData by name
-    public ArrayList<NhanVien> getDataByName(String input) {
+    public ArrayList<NhanVien> getDataByID(String input) {
         ArrayList<NhanVien> data = new ArrayList<>();
-        String sql = "SELECT * FROM NhanVien WHERE tennv COLLATE UTF8CI LIKE '%"+input+"%'";
+        String sql = "SELECT * FROM NhanVien WHERE manv COLLATE UTF8CI LIKE '%"+input+"%'";
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         try {
@@ -176,6 +176,52 @@ public class DBNhanVien {
         return check;
     }
 
+    //Lấy checkin bằng sdt
+    public int LayCheckin(String sdt) {
+        int data=0;
+        String sql = "select isCheckin from NhanVien where sdt ='" + sdt + "'";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        try {
+            cursor.moveToFirst();
+            do {
+
+                data = Integer.parseInt(cursor.getString(0)) ;
+
+            }
+            while (cursor.moveToNext());
+            db.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return data;
+    }
+
+    //lấy checkout bằng sdt
+    public int LayCheckout(String sdt) {
+        int data=0;
+        String sql = "select isCheckout from NhanVien where sdt ='" + sdt + "'";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        try {
+            cursor.moveToFirst();
+            do {
+
+                data = Integer.parseInt(cursor.getString(0)) ;
+
+            }
+            while (cursor.moveToNext());
+            db.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return data;
+    }
+
     //Lấy thông tin nhân viên qua sdt
     public ArrayList<NhanVien> LayNVBySDT(String sdt) {
         ArrayList<NhanVien> data = new ArrayList<>();
@@ -252,6 +298,18 @@ public class DBNhanVien {
         values.put("hesoluong", nhanVien.getBacLuong());
         values.put("imagenv", nhanVien.getImage());
         db.update("NhanVien", values, "manv ='" + nhanVien.getMaNV() + "'", null);
+        db.close();
+    }
+
+    //Update isCheck by sdt
+    public void updateIsCheck(int num1, int num2, String sdt) {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("isCheckin", num1 );
+        values.put("isCheckout", num2);
+
+        db.update("NhanVien", values, "sdt ='" + sdt + "'", null);
         db.close();
     }
 

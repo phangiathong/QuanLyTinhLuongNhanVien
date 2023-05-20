@@ -1,5 +1,7 @@
 package com.example.quanlytinhluong.Database;
 
+import android.accounts.Account;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +9,7 @@ import android.util.Log;
 
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.quanlytinhluong.Model.Accounts;
 import com.example.quanlytinhluong.Model.NhanVien;
 
 public class DBAccount {
@@ -25,6 +28,27 @@ public class DBAccount {
         } else {
             onClickListener.fail();
         }
+    }
+
+    public void suaAccount(Accounts account) {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("sdt", account.getSdt());
+        values.put("password", account.getPassword());
+        values.put("manv", account.getManv() );
+
+        db.update("Account", values, "manv ='" + account.getManv() + "'", null);
+        db.close();
+    }
+
+    //Check login admin
+    //Kiểm tra user đã tồn tại hay chưa
+    public Cursor checkAdminExist(String taikhoan){
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        String sql = "Select * from Account where sdt = '" + taikhoan + "'";
+        Cursor cursor =db.rawQuery(sql,null);
+        return cursor;
     }
 
     public void checkLogin(String sdt, onClickListener password) {
@@ -57,6 +81,29 @@ public class DBAccount {
             onClickListener.success(cursor.getString(0));
             Log.d("ok","ok");
         }
+    }
+
+    public Accounts layAdmin(String sdt){
+        Accounts accounts = new Accounts();
+
+        String sql = "Select * from Account where sdt = '" + sdt + "'";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        try {
+            cursor.moveToFirst();
+            do {
+                accounts.setSdt(cursor.getString(0));
+                accounts.setPassword(cursor.getString(1));
+                accounts.setManv(cursor.getString(2));
+            }
+            while (cursor.moveToNext());
+            db.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return accounts;
     }
 
     public interface onClickListenerRs {

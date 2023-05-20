@@ -83,7 +83,7 @@
         <EditText
             android:id="@+id/txtSoPhieu"
             style="@style/edttext"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingLeft="15dp"
             android:background="@drawable/edittext_background"
             android:layout_width="match_parent"
@@ -131,7 +131,7 @@
         <EditText
             android:id="@+id/txtSoTienUng"
             style="@style/edttext"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingLeft="15dp"
             android:background="@drawable/edittext_background"
             android:layout_width="match_parent"

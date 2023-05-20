@@ -19,6 +19,7 @@
         android:id="@+id/txtMaPhong"
         android:layout_width="350dp"
         android:layout_height="45dp"
+        android:inputType="number"
         android:paddingLeft="15dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/edit_text_background"

@@ -63,7 +63,7 @@ public class MainActivityNhanVien extends AppCompatActivity {
             public void onClick(View v) {
                 dataNV.clear();
                 String getInput=edtInput.getText().toString();
-                dataNV = dbNhanVien.getDataByName(getInput);
+                dataNV = dbNhanVien.getDataByID(getInput);
                 adapterNV =new AdapterNhanVien(MainActivityNhanVien.this, R.layout.custom_nhanvien, dataNV);
                 adapterNV.notifyDataSetChanged();
                 lvDanhSachNV.setAdapter(adapterNV);
@@ -85,7 +85,7 @@ public class MainActivityNhanVien extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actionbar, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 //        getMenuInflater().inflate(R.menu.menu_all, menu);
         return super.onCreateOptionsMenu(menu);
     }
