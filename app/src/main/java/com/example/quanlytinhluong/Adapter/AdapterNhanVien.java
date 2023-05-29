@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.example.quanlytinhluong.Interface.CheckOut.AddChamCong;
 import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
 import com.example.quanlytinhluong.Interface.Employee.UpdateNhanVien;
 import com.example.quanlytinhluong.Interface.Advance.AddTamUng;
+import com.example.quanlytinhluong.Interface.Task.AddTask;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
 
@@ -58,6 +60,7 @@ public class AdapterNhanVien extends ArrayAdapter {
     private static class Holder {
         TextView tvMaNV,  tvTenNV, tvNgaySinh, tvGioiTinh, tvPhongBan, tvLuong, tvSdt, tvMk;
         ImageView imgAnhDaiDien;
+        ImageButton imageTask;
         Button btnXoa, btnSua;
         Button btnChamCong, btnTamUng;
     }
@@ -82,6 +85,8 @@ public class AdapterNhanVien extends ArrayAdapter {
             holder.btnSua = view.findViewById(R.id.btnSua);
             holder.btnChamCong = view.findViewById(R.id.btnChamCong);
             holder.btnTamUng = view.findViewById(R.id.btnTamUng);
+            holder.imageTask = view.findViewById(R.id.btnTask);
+
             view.setTag(holder);
         }
         else
@@ -186,6 +191,17 @@ public class AdapterNhanVien extends ArrayAdapter {
                 Intent intent = new Intent(context, AddTamUng.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("ma",nhanVien.getMaNV());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.imageTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AddTask.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("manv",nhanVien.getMaNV());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

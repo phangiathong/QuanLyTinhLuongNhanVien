@@ -116,6 +116,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/infor"
         android:layout_marginTop="350dp"
         android:padding="10dp"
         android:orientation="vertical"
@@ -187,5 +188,15 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNVTask"
+        android:text="Task"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_all"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

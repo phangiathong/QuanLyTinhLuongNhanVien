@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import com.example.quanlytinhluong.Database.DBChamCong;
 import com.example.quanlytinhluong.Database.DBNVChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Database.DBPhongBan;
+import com.example.quanlytinhluong.Interface.Task.ListTaskNV;
 import com.example.quanlytinhluong.Model.NVChamCong;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
@@ -29,7 +31,7 @@ import java.util.Date;
 
 public class MainActivityAccounts extends AppCompatActivity {
 
-    Button btnCheckin, btnCheckout;
+    Button btnCheckin, btnCheckout, btnNVTask;
 
     TextView txtTennv, txtManv, txtPhongban, txtNgaythang;
     ArrayList<NhanVien> dataNV = new ArrayList<>();
@@ -48,6 +50,8 @@ public class MainActivityAccounts extends AppCompatActivity {
         setContentView(R.layout.activity_main_accounts);
         btnCheckin = findViewById(R.id.btnCheckin);
         btnCheckout = findViewById(R.id.btnCheckout);
+        btnNVTask = findViewById(R.id.btnNVTask);
+
         txtTennv = findViewById(R.id.tvTennv);
         txtManv = findViewById(R.id.tvManv);
         txtPhongban = findViewById(R.id.tvTenPhongBannv);
@@ -79,18 +83,28 @@ public class MainActivityAccounts extends AppCompatActivity {
         if (isCheckin==0){
             btnCheckin.setEnabled(true);
             btnCheckout.setEnabled(false);
-
         }else {
             btnCheckin.setEnabled(false);
             btnCheckout.setEnabled(true);
         }
+
+        btnNVTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ListTaskNV.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("manv", manv);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //Phải cho hơn 1s thì mới >= được vì tính giây nữa
-                String startTime = "17:30:00";
+                String startTime = "18:33:00";
 
                 long difference = getTimeToCheck(startTime);
 
@@ -100,7 +114,6 @@ public class MainActivityAccounts extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Bạn đã đi muộn", Toast.LENGTH_SHORT).show();
                         btnCheckout.setEnabled(false);
                     }else {
-                        Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
 
                         //isCheckin đang là 0, isCheckout đang là 1
                         //update isCheckin = 1, isCheckout = 0
@@ -109,6 +122,7 @@ public class MainActivityAccounts extends AppCompatActivity {
                         btnCheckout.setEnabled(true);
                         count +=1;
                     }
+                Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
 
                 //Checkout: khi bấm differen >=0 là đúng giờ, tính công
                 //Nếu đi muộn thì không checkout được nữa - disble
@@ -122,7 +136,7 @@ public class MainActivityAccounts extends AppCompatActivity {
                 DBNVChamCong dbNgayCong = new DBNVChamCong(getApplicationContext());
                 NVChamCong nvChamCong = new NVChamCong();
 
-                String endTime = "17:31:00";
+                String endTime = "18:34:00";
                 long difference = getTimeToCheck(endTime);
 
                 if (difference<=0) {
@@ -131,13 +145,6 @@ public class MainActivityAccounts extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
                     count+=1;
 
-//                    DBNhanVien dbNhanVien  =new DBNhanVien(getApplicationContext());
-//                    //Lưu trạng thái
-//                    int isCheckin = dbNhanVien.LayCheckin(sdt);
-//                    int isCheckout = dbNhanVien.LayCheckout(sdt);
-//                    Log.d("check",isCheckin + "- "+isCheckout);
-                    //isCheckin đang là 1, isCheckout đang là 0
-                    //update isCheckin = 0, isCheckout = 1
                     dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
                     btnCheckout.setEnabled(false);
 

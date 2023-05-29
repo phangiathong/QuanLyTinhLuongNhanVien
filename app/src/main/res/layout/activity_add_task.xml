@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_all"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:gravity="center_horizontal"
+    tools:context=".Interface.Task.AddTask">
+
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="Giao Công Việc"
+        android:gravity="center"
+        style="@style/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="20dp"
+        android:id="@+id/txtMonthTask"
+        style="@style/edttext"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_background"
+        android:layout_width="200dp"
+        android:layout_height="45dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="20dp"
+        android:id="@+id/txtWeekTask"
+        style="@style/edttext"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_background"
+        android:layout_width="200dp"
+        android:layout_height="45dp"/>
+
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="40dp"
+        style="@style/edttext"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Nội Dung"
+        android:gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="45dp"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edtMaTask"
+        style="@style/edttext"
+        android:inputType="number"
+        android:paddingLeft="15dp"
+        android:hint="Mã"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <EditText
+        android:id="@+id/edtNoteTask"
+        style="@style/edttext"
+        android:inputType="textMultiLine"
+        android:paddingLeft="15dp"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:maxLines="10"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edtNgayTask"
+        style="@style/edttext"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:hint="Ngày"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <Button
+        android:id="@+id/btnAddTask"
+        style="@style/button"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button_del"
+        android:text="@string/them"/>
+
+</LinearLayout>

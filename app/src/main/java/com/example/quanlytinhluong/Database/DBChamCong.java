@@ -18,10 +18,10 @@ public class DBChamCong {
         this.dbHelper = new DBHelper(context);
     }
 
-    //Kiểm tra ngày chấm công là duy nhất
+    //Kiểm tra admin chỉ chấm công một lần trong tháng
     public boolean checkChamCong(String timeCham, String manv) {
         boolean check = false;
-        String sql = "SELECT count(*) FROM ChamCong WHERE ngaychamcong LIKE \""+timeCham+"\" and manv LIKE \""+manv+"\" ";
+        String sql = "SELECT count(*) FROM ChamCong WHERE SUBSTR(ngaychamcong, 4, 10) LIKE SUBSTR(\""+timeCham+"\", 4, 10) and manv LIKE \""+manv+"\" ";
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
@@ -31,6 +31,19 @@ public class DBChamCong {
         }
         return check;
     }
+
+//    public boolean checkChamCong(String timeCham, String manv) {
+//        boolean check = false;
+//        String sql = "SELECT count(*) FROM ChamCong WHERE ngaychamcong LIKE \""+timeCham+"\" and manv LIKE \""+manv+"\" ";
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.rawQuery(sql, null);
+//        cursor.moveToFirst();
+//        int count  = cursor.getInt(0);
+//        if(count > 0) {
+//            check = true;
+//        }
+//        return check;
+//    }
 
     public void themChamCong(ChamCong chamCong) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();

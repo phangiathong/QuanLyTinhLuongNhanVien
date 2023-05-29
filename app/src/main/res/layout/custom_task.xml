@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:background="@drawable/background_all"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="ID NV" />
+        <TextView
+            android:background="@drawable/edittext_background"
+            android:id="@+id/tvMaNVTask"
+            style="@style/tv_noidung"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="80dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:id="@+id/tvTenNVTask"
+            style="@style/tv_noidung"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/edittext_background"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:fontFamily="@font/playfairdisplay_italic"
+            style="@style/tv_noidung"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="ID Task" />
+        <TextView
+            android:background="@drawable/edittext_background"
+            android:id="@+id/tvMaTask"
+            style="@style/tv_noidung"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="80dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtNoiDungTask"
+        style="@style/edttext"
+        android:enabled="false"
+        android:inputType="textMultiLine"
+        android:paddingLeft="15dp"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:maxLines="10"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"/>
+
+    <EditText
+        android:id="@+id/edtNgayThangTask"
+        style="@style/edttext"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:hint="Ngày"
+        android:textColor="@color/white"
+        android:enabled="false"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnXoaTask"
+            style="@style/button_model_view"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/delete"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -128,11 +128,19 @@ public class UpdateNhanVien extends AppCompatActivity {
                     checkError.checkEmpty(edtMk,"Hãy nhập mật khẩu");
 
                 } else {
-                    UpdateDL();
-                    Toast.makeText(UpdateNhanVien.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(UpdateNhanVien.this, MainActivityNhanVien.class);
-                    startActivity(intent);
-                    finish();
+                    DBAccount dbAccount = new DBAccount(getApplicationContext());
+                    boolean checkSdt = dbAccount.checkSdtNhanvien(edtSDT.getText().toString());
+                    if (checkSdt == true) {
+                        edtSDT.setError("SDT đã tồn tại");
+                        edtSDT.isFocused();
+                    }else {
+                        UpdateDL();
+                        Toast.makeText(UpdateNhanVien.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(UpdateNhanVien.this, MainActivityNhanVien.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
                 }
             }
         });
@@ -142,34 +150,34 @@ public class UpdateNhanVien extends AppCompatActivity {
         NhanVien nhanVien = new NhanVien();
         nhanVien.setMaNV(tvMa.getText().toString());
         nhanVien.setTenNV(edtTenNV.getText().toString());
+
         nhanVien.setSdt(edtSDT.getText().toString());
         nhanVien.setMatkhau(edtMk.getText().toString());
         nhanVien.setNgaySinh(edtNgaySinh.getText().toString());
-        if (radNam.isChecked()) {
-            nhanVien.setGioiTinh("Nam");
-        }
-        if (radNu.isChecked()) {
-            nhanVien.setGioiTinh("Nữ");
-        }
-        byte[] image = getByteArrayFromImageView(imgAnhDaiDien);
-        nhanVien.setImage(image);
-
+            if (radNam.isChecked()) {
+                nhanVien.setGioiTinh("Nam");
+            }
+            if (radNu.isChecked()) {
+                nhanVien.setGioiTinh("Nữ");
+            }
+            byte[] image = getByteArrayFromImageView(imgAnhDaiDien);
+            nhanVien.setImage(image);
 //        String mapb = Integer.toString(spPhongBan.getSelectedItemPosition());
 
-        String maPb = getMapb(spPhongBan,spPhongBan.getSelectedItemPosition());
+            String maPb = getMapb(spPhongBan,spPhongBan.getSelectedItemPosition());
 
-        nhanVien.setMaPhong(maPb);
+            nhanVien.setMaPhong(maPb);
 
-        nhanVien.setBacLuong(edtLuong.getText().toString());
-        DBNhanVien dbNhanVien = new DBNhanVien(this);
-        dbNhanVien.Sua(nhanVien);
-        DBAccount dbAccount = new DBAccount(this);
-        Accounts accounts = new Accounts();
-        accounts.setManv(tvMa.getText().toString());
-        accounts.setSdt(edtSDT.getText().toString());
-        accounts.setPassword(edtMk.getText().toString());
-        dbAccount.suaAccount(accounts);
+            nhanVien.setBacLuong(edtLuong.getText().toString());
+            DBNhanVien dbNhanVien = new DBNhanVien(this);
+            dbNhanVien.Sua(nhanVien);
 
+            DBAccount dbAccount = new DBAccount(this);
+            Accounts accounts = new Accounts();
+            accounts.setManv(tvMa.getText().toString());
+            accounts.setSdt(edtSDT.getText().toString());
+            accounts.setPassword(edtMk.getText().toString());
+            dbAccount.suaAccount(accounts);
     }
 
     public String getMapb(Spinner spinner,int position) {

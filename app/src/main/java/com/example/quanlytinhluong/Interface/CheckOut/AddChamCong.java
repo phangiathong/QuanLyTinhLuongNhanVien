@@ -22,8 +22,10 @@ import com.example.quanlytinhluong.Model.ChamCong;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddChamCong extends AppCompatActivity {
     TextView tvMaNhanVien, tvTenNhanVien;
@@ -50,6 +52,15 @@ public class AddChamCong extends AppCompatActivity {
         month= calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DATE);
 
+//        SimpleDateFormat outFormat = new SimpleDateFormat("EEEE");
+        //        String goal = outFormat.format(day);
+
+        String pattern = "EEEE MMMM yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+
+        Log.d("dayname", date+" "+day);
+
         showDate(year, month + 1, day);
         String manv = getIntent().getExtras().getString("ma");
         DBNhanVien dbNhanVien= new DBNhanVien(this);
@@ -73,10 +84,8 @@ public class AddChamCong extends AppCompatActivity {
                     checkError.checkEmpty(txtNgayChamCong, "Hãy nhập ngày");
                     checkError.checkEmpty(txtSoNgayCong, "Hãy nhập ngày công");
                 } else if (check == true) {
-                    Toast.makeText(getApplicationContext(), "Nhân viên này đã chấm công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddChamCong.this, MainActivityNhanVien.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(getApplicationContext(), "Nhân viên này đã chấm công rồi", Toast.LENGTH_SHORT).show();
+
                 } else {
 
                     int soCong = Integer.parseInt(txtSoNgayCong.getText().toString());

@@ -16,12 +16,13 @@ import com.example.quanlytinhluong.Interface.CheckOut.MainActivityChamCong;
 import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
 import com.example.quanlytinhluong.Interface.Departments.MainActivityPhongBan;
 import com.example.quanlytinhluong.Interface.Advance.MainActivityTamUng;
+import com.example.quanlytinhluong.Interface.Task.MainActivityTask;
 import com.example.quanlytinhluong.Interface.TotalSalary.MainActivityTongLuong;
 import com.example.quanlytinhluong.R;
 
 public class MainActivityHome extends AppCompatActivity {
 
-    Button btnDSNhanVien, btnDanhSachPB, btnDSChamCong, btnDSTamUng, btnThongKe;
+    Button btnDSNhanVien, btnDanhSachPB, btnDSChamCong, btnDSTamUng, btnThongKe, btnTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,15 @@ public class MainActivityHome extends AppCompatActivity {
         btnDSChamCong = findViewById(R.id.btnDSChamCong);
         btnDSTamUng=findViewById(R.id.btnDSTamUng);
         btnThongKe=findViewById(R.id.btnThongKe);
+        btnTask = findViewById(R.id.btnTask);
+
+        btnTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivityTask.class);
+                startActivity(intent);
+            }
+        });
 
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override

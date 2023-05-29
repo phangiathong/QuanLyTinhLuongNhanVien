@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/background_all"
+    tools:context=".Interface.Task.ListTaskNV">
+    <TextView
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:text="Danh Sách Công Việc"
+        style="@style/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="20dp"
+        android:id="@+id/txtMonthTaskNV"
+        style="@style/edttext"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_background"
+        android:layout_width="200dp"
+        android:layout_height="45dp"/>
+
+    <TextView
+        android:gravity="center"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:id="@+id/txtWeekTaskNV"
+        style="@style/edttext"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_background"
+        android:layout_width="200dp"
+        android:layout_height="45dp"/>
+
+    <ListView
+        android:layout_marginTop="10dp"
+        android:id="@+id/lvTaskNV"
+        style="@style/lv"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -32,6 +32,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String account = "Create table Account (sdt text PRIMARY KEY NOT NULL, password text, manv text)";
         db.execSQL(account);
+
+        String sqlTask = "Create table Task (matask INTEGER , manv text, noidung text, ngay text)";
+        db.execSQL(sqlTask);
     }
 
     @Override

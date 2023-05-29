@@ -51,6 +51,20 @@ public class DBAccount {
         return cursor;
     }
 
+    //Check sdt tồn tại hay chưa
+    public boolean checkSdtNhanvien(String sdt) {
+        boolean check = false;
+        String sql = "SELECT count(*) FROM Account WHERE sdt LIKE \""+sdt+"\" ";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        int count  = cursor.getInt(0);
+        if(count > 0) {
+            check = true;
+        }
+        return check;
+    }
+
     public void checkLogin(String sdt, onClickListener password) {
         String sql = "Select password from Account where sdt = '" + sdt + "'";
         Cursor cursor = dbHelper.getReadableDatabase().rawQuery(sql, null);

@@ -216,7 +216,7 @@
             android:fontFamily="@font/playfairdisplay_italic"
             style="@style/tv_noidung"
             android:layout_width="94dp"
-            android:text="Tiền lương" />
+            android:text="Tiền công" />
         <EditText
             android:id="@+id/edtLuong"
             style="@style/edttext"

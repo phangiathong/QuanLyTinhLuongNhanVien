@@ -20,6 +20,15 @@
         android:theme="@style/Theme.QuanLyTinhLuong"
         tools:targetApi="31">
         <activity
+            android:name=".Interface.Task.ListTaskNV"
+            android:exported="false" />
+        <activity
+            android:name=".Interface.Task.MainActivityTask"
+            android:exported="false" />
+        <activity
+            android:name=".Interface.Task.AddTask"
+            android:exported="false" />
+        <activity
             android:name=".Interface.MainActivityAccounts"
             android:exported="false" />
         <activity
