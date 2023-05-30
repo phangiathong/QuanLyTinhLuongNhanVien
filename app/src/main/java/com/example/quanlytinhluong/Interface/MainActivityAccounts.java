@@ -102,7 +102,9 @@ public class MainActivityAccounts extends AppCompatActivity {
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Checkout: khi bấm differen >=0 là đúng giờ, tính công
+                //Nếu đi muộn thì không checkout được nữa - disble
+                //Lúc demo bấm checkin checkout là chấm một công
                 //Phải cho hơn 1s thì mới >= được vì tính giây nữa
                 String startTime = "18:33:00";
 
@@ -110,23 +112,29 @@ public class MainActivityAccounts extends AppCompatActivity {
 
                 Log.d("gio", difference+"");
 
-                    if (difference>=0){
-                        Toast.makeText(getApplicationContext(), "Bạn đã đi muộn", Toast.LENGTH_SHORT).show();
-                        btnCheckout.setEnabled(false);
-                    }else {
+                //Code đúng chuẩn-----------
+//                    if (difference>=0){
+//                        Toast.makeText(getApplicationContext(), "Bạn đã đi muộn", Toast.LENGTH_SHORT).show();
+//                        btnCheckout.setEnabled(false);
+//                    }else {
+//
+//                        //isCheckin đang là 0, isCheckout đang là 1
+//                        //update isCheckin = 1, isCheckout = 0
+//                        dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
+//                        btnCheckin.setEnabled(false);
+//                        btnCheckout.setEnabled(true);
+//                        count +=1;
+//                    }
+                //--------------
 
-                        //isCheckin đang là 0, isCheckout đang là 1
-                        //update isCheckin = 1, isCheckout = 0
-                        dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
-                        btnCheckin.setEnabled(false);
-                        btnCheckout.setEnabled(true);
-                        count +=1;
-                    }
+                //Code demo
                 Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
+                dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
+                btnCheckin.setEnabled(false);
+                btnCheckout.setEnabled(true);
+                count +=1;
 
-                //Checkout: khi bấm differen >=0 là đúng giờ, tính công
-                //Nếu đi muộn thì không checkout được nữa - disble
-                //Lúc demo bấm checkin checkout là chấm một công
+
             }
         });
 
@@ -139,25 +147,43 @@ public class MainActivityAccounts extends AppCompatActivity {
                 String endTime = "18:34:00";
                 long difference = getTimeToCheck(endTime);
 
-                if (difference<=0) {
-                    Toast.makeText(getApplicationContext(), "Chưa đủ công", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
-                    count+=1;
+                //Code đúng chuẩn
+//                if (difference<=0) {
+//                    Toast.makeText(getApplicationContext(), "Chưa đủ công", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
+//                    count+=1;
+//
+//                    dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
+//                    btnCheckout.setEnabled(false);
+//
+//                    soCong+=1;
+//                    Log.d("cong",count+" Một công");
+//                    String cong = Integer.toString(soCong);
+//                    nvChamCong.setMaNV(manv);
+//                    nvChamCong.setNgayChamCong(timeNow);
+//                    nvChamCong.setSoCong(cong);
+//                    Log.d("nvChamCong",nvChamCong.toString());
+//
+//                    dbNgayCong.themNgayCong(nvChamCong);
+//                }
+                //--------------------
 
-                    dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
-                    btnCheckout.setEnabled(false);
+                Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
+                count+=1;
 
-                    soCong+=1;
-                    Log.d("cong",count+" Một công");
-                    String cong = Integer.toString(soCong);
-                    nvChamCong.setMaNV(manv);
-                    nvChamCong.setNgayChamCong(timeNow);
-                    nvChamCong.setSoCong(cong);
-                    Log.d("nvChamCong",nvChamCong.toString());
+                dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
+                btnCheckout.setEnabled(false);
 
-                    dbNgayCong.themNgayCong(nvChamCong);
-                }
+                soCong+=1;
+                Log.d("cong",count+" Một công");
+                String cong = Integer.toString(soCong);
+                nvChamCong.setMaNV(manv);
+                nvChamCong.setNgayChamCong(timeNow);
+                nvChamCong.setSoCong(cong);
+                Log.d("nvChamCong",nvChamCong.toString());
+
+                dbNgayCong.themNgayCong(nvChamCong);
 
             }
         });
