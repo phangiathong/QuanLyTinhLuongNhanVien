@@ -101,7 +101,14 @@ public class AddNhanVien extends AppCompatActivity {
                 boolean check = dbNhanVien.checkMaNhanVien(edtMaNV.getText().toString());
                 DBAccount dbAccount = new DBAccount(getApplicationContext());
                 boolean checkSdt = dbAccount.checkSdtNhanvien(edtSdt.getText().toString());
-                if (edtMaNV.getText().toString().isEmpty() || edtTenNV.getText().toString().isEmpty() || edtLuong.getText().toString().isEmpty() || edtSdt.getText().toString().isEmpty() || edtMk.getText().toString().isEmpty()) {
+
+                Log.d("edtmanv", edtMaNV.getText().toString().isEmpty()+"");
+
+                if (edtMaNV.getText().toString().isEmpty() ||
+                        edtTenNV.getText().toString().isEmpty() ||
+                        edtLuong.getText().toString().isEmpty() ||
+                        edtSdt.getText().toString().isEmpty() ||
+                        edtMk.getText().toString().isEmpty()) {
                     checkError.checkEmpty(edtMaNV,"Hãy nhập mã nhân viên");
                     checkError.checkEmpty(edtTenNV,"Hãy nhập tên nhân viên");
                     checkError.checkEmpty(edtLuong,"Vui nhập hệ số lương");
@@ -111,13 +118,12 @@ public class AddNhanVien extends AppCompatActivity {
                 } else if (check == true) {
                     edtMaNV.setError("Mã nhân viên đã tồn tại");
                     edtMaNV.isFocused();
-                } if(checkSdt == true){
+                }else if(checkSdt == true) {
                     edtSdt.setError("SDT đã tồn tại");
                     edtSdt.isFocused();
                 } else {
                     if (spPhongBan.getCount()==0) {
                         Toast.makeText(getApplication(), "Hãy thêm phòng ban", Toast.LENGTH_SHORT).show();
-                        Log.d("Nulll","khong");
                     }else {
                         ThemDL();
                         Toast.makeText(AddNhanVien.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -161,11 +167,11 @@ public class AddNhanVien extends AppCompatActivity {
             new DBAccount(getApplicationContext()).themAccount(sdt, matkhau, manv, new DBAccount.onClickListenerRs() {
                 @Override
                 public void success() {
-                    Toast.makeText(getApplicationContext(), "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void fail() {
-                    Toast.makeText(getApplicationContext(), "Đăng Ký Thất Bại", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Đăng Ký Thất Bại", Toast.LENGTH_SHORT).show();
                 }
             });
 

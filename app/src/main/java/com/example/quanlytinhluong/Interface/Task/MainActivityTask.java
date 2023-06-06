@@ -38,7 +38,6 @@ public class MainActivityTask extends AppCompatActivity {
         adapterTask.notifyDataSetChanged();
         lvTask.setAdapter(adapterTask);
 
-
     }
 
     @Override

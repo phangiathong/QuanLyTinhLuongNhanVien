@@ -13,9 +13,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/quanlytinhluong"
         android:label="Công Ty TNHH An Việt"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/quanlytinhluong"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyTinhLuong"
         tools:targetApi="31">
@@ -71,13 +71,13 @@
             android:name=".Interface.Employee.AddNhanVien"
             android:exported="false" />
         <activity
-            android:name=".Interface.MainActivityHome"
+            android:name=".Interface.MainActivityLogin"
             android:exported="false" />
         <activity
             android:name=".Interface.Employee.MainActivityNhanVien"
             android:exported="false" />
         <activity
-            android:name=".Interface.MainActivityLogin"
+            android:name=".Interface.MainActivityHome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

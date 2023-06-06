@@ -53,7 +53,7 @@ public class AddTask extends AppCompatActivity {
         String manv = getIntent().getExtras().getString("manv");
         int monthNum = month +1;
         txtMonth.setText("Tháng "+monthNum+" năm "+year);
-        edtNoteTask.requestFocus();
+        edtMaTask.requestFocus();
 
         if (day<=8) {
             txtWeek.setText("Tuần thứ: " + 1);
