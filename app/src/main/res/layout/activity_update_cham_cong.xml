@@ -101,7 +101,7 @@
             style="@style/tv_noidung"
             android:layout_width="41dp"
             android:layout_height="wrap_content"
-            android:text="Số ngày công" />
+            android:text="Số công" />
 
         <EditText
             android:id="@+id/txtSoNgayCong"

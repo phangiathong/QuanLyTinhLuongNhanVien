@@ -52,6 +52,6 @@
         android:textColor="@color/white"
         android:background="@drawable/edittext_background"
         android:layout_width="match_parent"
-        android:layout_height="130dp"/>
+        android:layout_height="140dp"/>
 
 </LinearLayout>

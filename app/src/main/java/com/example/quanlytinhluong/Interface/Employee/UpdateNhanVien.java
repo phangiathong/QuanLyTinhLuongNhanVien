@@ -128,18 +128,18 @@ public class UpdateNhanVien extends AppCompatActivity {
                     checkError.checkEmpty(edtMk,"Hãy nhập mật khẩu");
 
                 } else {
-                    DBAccount dbAccount = new DBAccount(getApplicationContext());
-                    boolean checkSdt = dbAccount.checkSdtNhanvien(edtSDT.getText().toString());
-                    if (checkSdt == true) {
-                        edtSDT.setError("SDT đã tồn tại");
-                        edtSDT.isFocused();
-                    }else {
+//                    DBAccount dbAccount = new DBAccount(getApplicationContext());
+//                    boolean checkSdt = dbAccount.checkSdtNhanvien(edtSDT.getText().toString());
+//                    if (checkSdt == true) {
+//                        edtSDT.setError("SDT đã tồn tại");
+//                        edtSDT.isFocused();
+//                    }else {
                         UpdateDL();
                         Toast.makeText(UpdateNhanVien.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(UpdateNhanVien.this, MainActivityNhanVien.class);
                         startActivity(intent);
                         finish();
-                    }
+//                    }
 
                 }
             }
