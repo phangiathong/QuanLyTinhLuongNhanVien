@@ -111,9 +111,9 @@ public class AddNhanVien extends AppCompatActivity {
                         edtMk.getText().toString().isEmpty()) {
                     checkError.checkEmpty(edtMaNV,"Hãy nhập mã nhân viên");
                     checkError.checkEmpty(edtTenNV,"Hãy nhập tên nhân viên");
-                    checkError.checkEmpty(edtLuong,"Vui nhập hệ số lương");
-                    checkError.checkEmpty(edtSdt,"Vui nhập số điện thoại");
-                    checkError.checkEmpty(edtMk,"Vui nhập mật khẩu");
+                    checkError.checkEmpty(edtLuong,"Hãy nhập hệ số lương");
+                    checkError.checkEmpty(edtSdt,"Hãy nhập số điện thoại");
+                    checkError.checkEmpty(edtMk,"Hãy nhập mật khẩu");
 
                 } else if (check == true) {
                     edtMaNV.setError("Mã nhân viên đã tồn tại");

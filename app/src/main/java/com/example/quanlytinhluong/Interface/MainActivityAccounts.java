@@ -132,8 +132,9 @@ public class MainActivityAccounts extends AppCompatActivity {
                 dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
                 btnCheckin.setEnabled(false);
                 btnCheckout.setEnabled(true);
-                count +=1;
 
+                finish();
+                startActivity(getIntent());
 
             }
         });
@@ -170,18 +171,15 @@ public class MainActivityAccounts extends AppCompatActivity {
                 //--------------------
 
                 Toast.makeText(getApplicationContext(), "Xin cảm ơn!", Toast.LENGTH_SHORT).show();
-                count+=1;
 
                 dbNhanVien.updateIsCheck(isCheckout,isCheckin,sdt);
                 btnCheckout.setEnabled(false);
 
                 soCong+=1;
-                Log.d("cong",count+" Một công");
                 String cong = Integer.toString(soCong);
                 nvChamCong.setMaNV(manv);
                 nvChamCong.setNgayChamCong(timeNow);
                 nvChamCong.setSoCong(cong);
-                Log.d("nvChamCong",nvChamCong.toString());
 
                 dbNgayCong.themNgayCong(nvChamCong);
 

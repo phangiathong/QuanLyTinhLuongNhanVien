@@ -70,7 +70,11 @@ public class AddTask extends AppCompatActivity {
             public void onClick(View v) {
                 DBTask dbTask = new DBTask(getApplicationContext());
                 boolean check = dbTask.checkMaTask(edtMaTask.getText().toString());
-                if (check==true) {
+
+                if (edtMaTask.getText().toString().isEmpty()) {
+                    edtMaTask.setError("Hãy nhập mã");
+                    edtMaTask.isFocused();
+                }else if (check==true) {
                     edtMaTask.setError("Mã đã tồn tại");
                     edtMaTask.isFocused();
                 }else {

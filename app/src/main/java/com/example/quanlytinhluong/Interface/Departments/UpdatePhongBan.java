@@ -47,7 +47,6 @@ public class UpdatePhongBan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SuaDL();
-                Toast.makeText(UpdatePhongBan.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -61,6 +60,7 @@ public class UpdatePhongBan extends AppCompatActivity {
             phongBan.setTenPhong(txtTenPB.getText().toString());
             DBPhongBan dbPhongBan = new DBPhongBan(getApplicationContext());
             dbPhongBan.Sua(phongBan);
+            Toast.makeText(UpdatePhongBan.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(UpdatePhongBan.this, MainActivityPhongBan.class);
             startActivity(intent);
             finish();
