@@ -38,7 +38,6 @@ public class MainActivityAccounts extends AppCompatActivity {
 
     Calendar calendar;
     int year, month, day;
-    int count=0;
     int hour, minute, second;
     int soCong = 0;
     Calendar currentTime;
