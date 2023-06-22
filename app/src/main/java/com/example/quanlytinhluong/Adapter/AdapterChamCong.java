@@ -87,10 +87,12 @@ public class AdapterChamCong extends ArrayAdapter {
                         //Xóa nhân viên ADmin chấm công
                         DBChamCong dbChamCong = new DBChamCong(getContext());
                         dbChamCong.xoaChamCong(chamCong);
-                        //Xóa nhân viên chấm công
+                        //Xóa nhân viên chấm công theo mã
                         DBNVChamCong dbnvChamCong = new DBNVChamCong(getContext());
-                        NVChamCong nvChamCong = dbnvChamCong.LayNVChamCong(chamCong.getMaNV());
-                        dbnvChamCong.xoaNVChamCong(nvChamCong);
+                        dbnvChamCong.xoaNVChamCong(chamCong.getMaNV());
+//                        DBNVChamCong dbnvChamCong = new DBNVChamCong(getContext());
+//                        NVChamCong nvChamCong = dbnvChamCong.LayNVChamCong(chamCong.getMaNV());
+//                        dbnvChamCong.xoaNVChamCong(nvChamCong);
 
                         Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), MainActivityChamCong.class);

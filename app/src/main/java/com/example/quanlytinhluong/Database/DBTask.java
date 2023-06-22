@@ -46,6 +46,13 @@ public class DBTask {
         db.close();
     }
 
+    //Xóa tất cả công việc của một nhân viên
+    public void xoaAllTask(String manv) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete("Task", "manv= '" + manv + "'", null);
+        db.close();
+    }
+
     //Kiểm tra Mã task là duy nhất
     public boolean checkMaTask(String matask) {
         boolean check = false;

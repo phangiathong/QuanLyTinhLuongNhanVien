@@ -21,7 +21,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.quanlytinhluong.Database.DBAccount;
+import com.example.quanlytinhluong.Database.DBNVChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
+import com.example.quanlytinhluong.Database.DBTask;
 import com.example.quanlytinhluong.Interface.CheckOut.AddChamCong;
 import com.example.quanlytinhluong.Interface.Employee.MainActivityNhanVien;
 import com.example.quanlytinhluong.Interface.Employee.UpdateNhanVien;
@@ -41,6 +43,7 @@ public class AdapterNhanVien extends ArrayAdapter {
     ArrayList<NhanVien> data;
     final DBNhanVien dbNhanVien = new DBNhanVien(getContext());
     DBAccount dbAccount = new DBAccount(getContext());
+    DBTask dbTask = new DBTask(getContext());
     Locale localeVN = new Locale("vi", "VN");
     NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
 
@@ -169,6 +172,9 @@ public class AdapterNhanVien extends ArrayAdapter {
                         public void onClick(DialogInterface dialog, int which) {
                             dbNhanVien.Xoa(nhanVien);
                             dbAccount.XoaAccount(nhanVien);
+                            dbTask.xoaAllTask(nhanVien.getMaNV());
+                            DBNVChamCong dbnvChamCong = new DBNVChamCong(getContext());
+                            dbnvChamCong.xoaNVChamCong(nhanVien.getMaNV());
                             Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getContext(), MainActivityNhanVien.class);
                             context.startActivity(intent);

@@ -51,9 +51,9 @@ public class DBNVChamCong {
         return data;
     }
 
-    public void xoaNVChamCong(NVChamCong nvChamCong) {
+    public void xoaNVChamCong(String manv) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.delete("NVChamCong", "manv= '" + nvChamCong.getMaNV() + "'"  , null);
+        db.delete("NVChamCong", "manv= '" + manv + "'"  , null);
         db.close();
     }
 
