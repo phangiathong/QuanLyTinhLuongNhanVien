@@ -108,6 +108,7 @@
             android:id="@+id/txtNgayUng"
             style="@style/edttext"
             android:inputType="text"
+            android:enabled="false"
             android:paddingLeft="15dp"
             android:background="@drawable/edittext_background"
             android:layout_width="match_parent"

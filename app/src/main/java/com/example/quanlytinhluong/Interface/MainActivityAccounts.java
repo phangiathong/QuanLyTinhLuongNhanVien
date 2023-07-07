@@ -19,6 +19,7 @@ import com.example.quanlytinhluong.Database.DBNVChamCong;
 import com.example.quanlytinhluong.Database.DBNhanVien;
 import com.example.quanlytinhluong.Database.DBPhongBan;
 import com.example.quanlytinhluong.Interface.Task.ListTaskNV;
+import com.example.quanlytinhluong.Interface.TotalSalary.MainActivity_LuongNV;
 import com.example.quanlytinhluong.Model.NVChamCong;
 import com.example.quanlytinhluong.Model.NhanVien;
 import com.example.quanlytinhluong.R;
@@ -31,7 +32,7 @@ import java.util.Date;
 
 public class MainActivityAccounts extends AppCompatActivity {
 
-    Button btnCheckin, btnCheckout, btnNVTask;
+    Button btnCheckin, btnCheckout, btnNVTask, btnLuongNV;
 
     TextView txtTennv, txtManv, txtPhongban, txtNgaythang;
     ArrayList<NhanVien> dataNV = new ArrayList<>();
@@ -50,6 +51,8 @@ public class MainActivityAccounts extends AppCompatActivity {
         btnCheckin = findViewById(R.id.btnCheckin);
         btnCheckout = findViewById(R.id.btnCheckout);
         btnNVTask = findViewById(R.id.btnNVTask);
+        btnLuongNV = findViewById(R.id.btnLuongNV);
+
 
         txtTennv = findViewById(R.id.tvTennv);
         txtManv = findViewById(R.id.tvManv);
@@ -98,6 +101,17 @@ public class MainActivityAccounts extends AppCompatActivity {
             }
         });
 
+        btnLuongNV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity_LuongNV.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("manv", manv);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +119,7 @@ public class MainActivityAccounts extends AppCompatActivity {
                 //Nếu đi muộn thì không checkout được nữa - disble
                 //Lúc demo bấm checkin checkout là chấm một công
                 //Phải cho hơn 1s thì mới >= được vì tính giây nữa
-                String startTime = "18:33:00";
+                String startTime = "08:00:00";
 
                 long difference = getTimeToCheck(startTime);
 
@@ -144,7 +158,7 @@ public class MainActivityAccounts extends AppCompatActivity {
                 DBNVChamCong dbNgayCong = new DBNVChamCong(getApplicationContext());
                 NVChamCong nvChamCong = new NVChamCong();
 
-                String endTime = "18:34:00";
+                String endTime = "17:00:00";
                 long difference = getTimeToCheck(endTime);
 
                 //Code đúng chuẩn

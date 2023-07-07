@@ -18,7 +18,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="ID Task" />
+            android:text="ID CV" />
         <TextView
             android:background="@drawable/edittext_background"
             android:id="@+id/tvMaTaskNV"

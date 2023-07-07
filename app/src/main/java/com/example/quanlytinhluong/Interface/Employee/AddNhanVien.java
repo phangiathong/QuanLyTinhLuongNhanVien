@@ -174,7 +174,6 @@ public class AddNhanVien extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "Đăng Ký Thất Bại", Toast.LENGTH_SHORT).show();
                 }
             });
-
     }
 
     @Override

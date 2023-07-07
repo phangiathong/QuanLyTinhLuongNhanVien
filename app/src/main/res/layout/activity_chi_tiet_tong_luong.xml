@@ -73,7 +73,7 @@
             style="@style/tv_noidung"
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:text="Hệ số lương" />
+            android:text="Tiền công" />
         <TextView
             android:layout_marginLeft="40dp"
             android:id="@+id/tvHeSoLuong"

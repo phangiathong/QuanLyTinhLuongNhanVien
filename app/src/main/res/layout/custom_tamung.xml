@@ -19,7 +19,7 @@
                 style="@style/tv_noidung"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:text="ID nhân viên" />
+                android:text="Mã" />
             <TextView
                 android:id="@+id/tvMaNV"
                 style="@style/tv_noidung"

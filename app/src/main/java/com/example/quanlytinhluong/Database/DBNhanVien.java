@@ -348,5 +348,35 @@ public class DBNhanVien {
         return data;
     }
 
+    //Lấy danh sách lương của một nhân viên để tổng lương
+    public ArrayList<ThongKe> layDSLuongNV(String maNV) {
+        ArrayList<ThongKe> data = new ArrayList<>();
+        String sql = "select NhanVien.manv, NhanVien.tennv, PhongBan.tenpb, NhanVien.hesoluong, ChamCong.ngaychamcong, ChamCong.songaycong, TamUng.sotienung " +
+                "from NhanVien LEFT JOIN  PhongBan on PhongBan.mapb = NhanVien.mapb " +
+                "INNER JOIN  ChamCong on NhanVien.manv = ChamCong.manv  " +
+                "LEFT JOIN TamUng on NhanVien.manv = TamUng.manv " +
+                "Where NhanVien.manv = '" + maNV + "'";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        try {
+            cursor.moveToFirst();
+            do {
+                ThongKe thongKe = new ThongKe();
+                thongKe.setMaNV(cursor.getString(0));
+                thongKe.setTenNV(cursor.getString(1));
+                thongKe.setTenPhong(cursor.getString(2));
+                thongKe.setHeSoLuong(cursor.getString(3));
+                thongKe.setNgayChamCong(cursor.getString(4));
+                thongKe.setSoNgayCong(cursor.getString(5));
+                thongKe.setTienTamUng(cursor.getString(6));
+                data.add(thongKe);
+            }
+            while (cursor.moveToNext());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return data;
+    }
+
 
 }
